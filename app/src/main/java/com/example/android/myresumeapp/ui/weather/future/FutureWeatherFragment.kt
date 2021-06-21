@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.android.myresumeapp.R
-import com.example.android.myresumeapp.databinding.FragmentWeatherBinding
 import com.example.android.myresumeapp.databinding.FutureWeatherFragmentBinding
 
 class FutureWeatherFragment : Fragment() {

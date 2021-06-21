@@ -1,4 +1,4 @@
-package com.example.android.myresumeapp.data.db.entity
+package com.example.android.myresumeapp.data.db
 
 
 import androidx.room.Entity
@@ -11,15 +11,15 @@ const val CURRENT_WEATHER_ID = 0
         tableName = "current_weather"
 )
 data class Main(
-    @PrimaryKey(autoGenerate = false)
+        @PrimaryKey(autoGenerate = false)
     var id: Int = CURRENT_WEATHER_ID,
-    @SerializedName("feels_like")
+        @SerializedName("feels_like")
     val feelsLike: Double,
-    val humidity: Int,
-    val pressure: Int,
-    val temp: Double,
-    @SerializedName("temp_max")
+        val humidity: Int,
+        val pressure: Int,
+        val temp: Double,
+        @SerializedName("temp_max")
     val tempMax: Double,
-    @SerializedName("temp_min")
+        @SerializedName("temp_min")
     val tempMin: Double
 )

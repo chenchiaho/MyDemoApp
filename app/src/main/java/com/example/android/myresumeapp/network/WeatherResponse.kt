@@ -1,6 +1,7 @@
-package com.example.android.myresumeapp.data.network.response
+package com.example.android.myresumeapp.network
 
-import com.example.android.myresumeapp.data.db.entity.*
+import com.example.android.myresumeapp.data.db.Main
+import com.example.android.myresumeapp.data.entity.*
 
 
 data class WeatherResponse(

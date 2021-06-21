@@ -1,32 +1,33 @@
 package com.example.android.myresumeapp.ui.weather.current
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.android.myresumeapp.R
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
+import com.example.android.myresumeapp.databinding.CurrentWeatherFragmentBinding
+
+
 
 class CurrentWeatherFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CurrentWeatherFragment()
-    }
+    lateinit var viewModel: CurrentWeatherViewModel
+    lateinit var binding: CurrentWeatherFragmentBinding
 
-    private lateinit var viewModel: CurrentWeatherViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.current_weather_fragment, container, false)
-    }
+    ): View {
+        binding = CurrentWeatherFragmentBinding.inflate(inflater)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CurrentWeatherViewModel::class.java)
-        // TODO: Use the ViewModel
+
+
+        return binding.root
     }
 
 }

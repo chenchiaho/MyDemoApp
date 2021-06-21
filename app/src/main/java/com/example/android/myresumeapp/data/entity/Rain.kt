@@ -1,4 +1,4 @@
-package com.example.android.myresumeapp.data.db.entity
+package com.example.android.myresumeapp.data.entity
 
 
 import com.google.gson.annotations.SerializedName

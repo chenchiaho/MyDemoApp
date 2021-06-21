@@ -1,7 +1,7 @@
 package com.example.android.myresumeapp.api
 
 import com.example.android.myresumeapp.api.Constants.Companion.API_KEY
-import com.example.android.myresumeapp.data.network.response.WeatherResponse
+import com.example.android.myresumeapp.network.WeatherResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

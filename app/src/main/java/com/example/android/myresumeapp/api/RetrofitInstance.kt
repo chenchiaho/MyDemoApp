@@ -23,9 +23,9 @@ class RetrofitInstance {
                     .client(client)
                     .build()
         }
+        val api by lazy {
+            retrofit.create(WeatherAPI::class.java)
+        }
     }
 
-    val api by lazy {
-        retrofit.create(WeatherAPI::class.java)
-    }
 }
