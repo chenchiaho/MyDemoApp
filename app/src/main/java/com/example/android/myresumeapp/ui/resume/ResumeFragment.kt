@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import com.example.android.myresumeapp.R
 import com.example.android.myresumeapp.databinding.FragmentResumeBinding
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class ResumeFragment : Fragment() {
@@ -21,14 +22,8 @@ class ResumeFragment : Fragment() {
 
         val binding = FragmentResumeBinding.inflate(inflater)
         binding.lifecycleOwner = this
-
-        binding.weatherNav.setOnClickListener { navToWeather() }
-
+        
         return binding.root
-    }
-
-    private fun navToWeather() {
-        this.findNavController().navigate(ResumeFragmentDirections.actionResumeFragmentToCurrentWeatherFragment())
     }
 
 }

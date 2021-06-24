@@ -7,13 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.android.myresumeapp.R
+import com.example.android.myresumeapp.api.WeatherAPI
 import com.example.android.myresumeapp.databinding.FutureWeatherFragmentBinding
+import kotlinx.android.synthetic.main.current_weather_fragment.*
+
+import kotlinx.android.synthetic.main.future_weather_fragment.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class FutureWeatherFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FutureWeatherFragment()
-    }
 
     private lateinit var viewModel: FutureWeatherViewModel
     private lateinit var binding: FutureWeatherFragmentBinding
@@ -21,16 +25,18 @@ class FutureWeatherFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
+        binding = FutureWeatherFragmentBinding.inflate(inflater)
 
-        return inflater.inflate(R.layout.future_weather_fragment, container, false)
+        val api = WeatherAPI
+        GlobalScope.launch(Dispatchers.Main) {
+            val current = api.api.getCurrentWeatherMetric("london")
+//            temp3.text = current.body().toString()
+        }
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FutureWeatherViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

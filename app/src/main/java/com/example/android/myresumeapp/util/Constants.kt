@@ -1,4 +1,4 @@
-package com.example.android.myresumeapp.api
+package com.example.android.myresumeapp.util
 
 class Constants {
     companion object {

@@ -1,6 +1,6 @@
 package com.example.android.myresumeapp.api
 
-import com.example.android.myresumeapp.api.Constants.Companion.BASE_URL
+import com.example.android.myresumeapp.util.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package com.example.android.myresumeapp.data.db
+package com.example.android.myresumeapp.database.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -11,8 +11,8 @@ import androidx.room.Query
 interface CurrentWeatherDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert (currentWeather: Main)
+    suspend fun upsert (currentWeather: WeatherResponse)
 
     @Query("SELECT * FROM current_weather")
-    fun getWeatherMetric(): LiveData<List<Main>>
+    fun getWeatherMetric(): List<WeatherResponse>
 }

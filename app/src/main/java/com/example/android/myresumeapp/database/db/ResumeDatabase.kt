@@ -1,4 +1,4 @@
-package com.example.android.myresumeapp.data.db
+package com.example.android.myresumeapp.database.db
 
 import android.content.Context
 import androidx.room.Database
@@ -8,8 +8,9 @@ import androidx.room.RoomDatabase
 
 
 @Database(
-        entities = [Main::class],
-        version = 1
+        entities = [WeatherResponse::class],
+        version = 1,
+        exportSchema = false
 )
 abstract class ResumeDatabase : RoomDatabase() {
 

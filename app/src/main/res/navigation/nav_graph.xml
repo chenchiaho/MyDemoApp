@@ -9,20 +9,17 @@
         android:id="@+id/resumeFragment"
         android:name="com.example.android.myresumeapp.ui.resume.ResumeFragment"
         android:label="fragment_resume"
-        tools:layout="@layout/fragment_resume" >
-        <action
-            android:id="@+id/action_resumeFragment_to_currentWeatherFragment"
-            app:destination="@id/currentWeatherFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_resume" />
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.example.android.myresumeapp.ui.weather.WeatherFragment"
+        android:label="fragment_weather"
+        tools:layout="@layout/fragment_weather" />
     <fragment
         android:id="@+id/currentWeatherFragment"
         android:name="com.example.android.myresumeapp.ui.weather.current.CurrentWeatherFragment"
         android:label="current_weather_fragment"
-        tools:layout="@layout/current_weather_fragment">
-        <action
-            android:id="@+id/action_currentWeatherFragment_to_resumeFragment"
-            app:destination="@id/resumeFragment" />
-    </fragment>
+        tools:layout="@layout/current_weather_fragment"/>
     <fragment
         android:id="@+id/futureWeatherFragment"
         android:name="com.example.android.myresumeapp.ui.weather.future.FutureWeatherFragment"
@@ -37,4 +34,5 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.android.myresumeapp.ui.settings.settingsFragment"
         android:label="settingsFragment" />
+
 </navigation>
