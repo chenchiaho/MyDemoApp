@@ -15,99 +15,147 @@
         android:layout_height="match_parent"
         tools:context=".ui.resume.ResumeFragment">
 
+        <!--        <include-->
+        <!--            android:id="@+id/personal_info"-->
+        <!--            layout="@layout/personal_info"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <include
-            android:id="@+id/personal_info"
-            layout="@layout/personal_info"
+        <TextView
+            android:id="@+id/text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/my_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView_email2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/email"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView_email"
+            app:layout_constraintStart_toEndOf="@+id/textView_email" />
+
+        <TextView
+            android:id="@+id/textView_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/link_field"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_email" />
+
+        <TextView
+            android:id="@+id/textView_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/email_field"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_name" />
+
+        <TextView
+            android:id="@+id/textView_link2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/my_link"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView_link"
+            app:layout_constraintStart_toEndOf="@+id/textView_link" />
+
+        <TextView
+            android:id="@+id/textView_mood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/mood_field"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_link" />
+
+        <TextView
+            android:id="@+id/textView_mood2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{viewmodel.currentMood}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView_mood"
+            app:layout_constraintStart_toEndOf="@+id/textView_mood" />
+
+        <Button
+            android:id="@+id/button_mood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:onClick="@{() -> viewmodel.onChangeMoodClick()}"
+            android:text="@string/button_mood"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_mood" />
+
+
+        <TextView
             android:id="@+id/summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="TextView"
-            app:layout_constraintTop_toBottomOf="@+id/personal_info"
-            tools:layout_editor_absoluteX="0dp"
-            tools:text="My name is Kevin, I love codiing" />
+            app:layout_constraintTop_toBottomOf="@+id/button_mood"
+            tools:layout_editor_absoluteX="16dp"
+            tools:text="My name is Kevin, I love codiing " />
 
         <TextView
             android:id="@+id/textView_impression"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintTop_toBottomOf="@+id/summary"
-            tools:layout_editor_absoluteX="0dp"
-            tools:text="Leave an impression!" />
+            android:text="@{viewmodel.displayImpression}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/summary" />
 
         <EditText
             android:id="@+id/editText_impression"
             android:layout_width="70dp"
             android:layout_height="16dp"
             android:layout_marginTop="8dp"
-            android:hint="Input here"
-            android:text="TextView"
+            android:hint="Leave an impression!"
+            android:text="@={viewmodel.editImpression}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_impression" />
 
+
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_generate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Random generate"
+
             android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/button2"
-            app:layout_constraintStart_toEndOf="@+id/button2" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_enter"
+            app:layout_constraintStart_toEndOf="@+id/button_enter" />
+        <!--        android:onClick="@{() -> viewmodel.generateImpression}"-->
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_enter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+
             android:text="Enter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_impression" />
-
-        <!--        <LinearLayout-->
-<!--            android:id="@+id/linearLayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:orientation="vertical"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/personal_info">-->
-
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent" />-->
-<!--        </LinearLayout>-->
-
-<!--        <com.google.android.material.button.MaterialButton-->
-<!--            android:id="@+id/weather_nav"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:text="weather"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
-
-        <!--    <include-->
-        <!--        layout="@layout/weather_view"-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:clickable="true"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@id/linearLayout" />-->
-
+        <!--        android:onClick="@{() -> viewmodel.enterImpression}"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -2,4 +2,11 @@
     <string name="app_name">MyResumeApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="my_name">Kevin La</string>
+    <string name="email">chenchiaho@gmail.com</string>
+    <string name="link_field">Linkedin:</string>
+    <string name="email_field">Email:</string>
+    <string name="my_link">www.linkedin.com/in/chenchiaho</string>
+    <string name="mood_field">Current Mood:</string>
+    <string name="button_mood">Get Mood!</string>
 </resources>
