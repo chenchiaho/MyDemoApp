@@ -8,154 +8,176 @@
             name="viewmodel"
             type="com.example.android.myresumeapp.ui.resume.ResumeViewModel" />
 
+        <variable
+            name="repository"
+            type="com.example.android.myresumeapp.repository.ResumeRepository" />
+
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.resume.ResumeFragment">
 
-        <!--        <include-->
-        <!--            android:id="@+id/personal_info"-->
-        <!--            layout="@layout/personal_info"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
+
 
         <TextView
             android:id="@+id/text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
             android:text="@string/my_name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView_email2"
+            android:id="@+id/textView_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/email_field"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_name" />
+
+        <TextView
+            android:id="@+id/textView_email2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="email"
             android:text="@string/email"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView_email"
-            app:layout_constraintStart_toEndOf="@+id/textView_email" />
+            android:textColorLink="#81AEC6"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView_email"
+            app:layout_constraintTop_toBottomOf="@+id/textView_email" />
 
         <TextView
             android:id="@+id/textView_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:text="@string/link_field"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_email" />
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="@+id/textView_email"
+            app:layout_constraintTop_toBottomOf="@+id/textView_email2" />
 
-        <TextView
-            android:id="@+id/textView_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/email_field"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_name" />
 
         <TextView
             android:id="@+id/textView_link2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:autoLink="web"
+            android:linksClickable="true"
             android:text="@string/my_link"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView_link"
-            app:layout_constraintStart_toEndOf="@+id/textView_link" />
+            android:textColorLink="#81AEC6"
+            app:layout_constraintStart_toStartOf="@+id/textView_link"
+            app:layout_constraintTop_toBottomOf="@+id/textView_link" />
 
         <TextView
             android:id="@+id/textView_mood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:text="@string/mood_field"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_link" />
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="@+id/textView_link"
+            app:layout_constraintTop_toBottomOf="@+id/textView_link2" />
 
         <TextView
             android:id="@+id/textView_mood2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:text="@{viewmodel.currentMood}"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView_mood"
-            app:layout_constraintStart_toEndOf="@+id/textView_mood" />
+
+            app:layout_constraintStart_toStartOf="@+id/textView_mood"
+            app:layout_constraintTop_toBottomOf="@+id/textView_mood"
+            tools:text="Test Mood" />
 
         <Button
             android:id="@+id/button_mood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
             android:onClick="@{() -> viewmodel.onChangeMoodClick()}"
+
             android:text="@string/button_mood"
-            android:textSize="10sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_mood" />
+            app:layout_constraintStart_toStartOf="@+id/textView_mood"
+            app:layout_constraintTop_toBottomOf="@+id/textView_mood2" />
 
 
         <TextView
             android:id="@+id/summary"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintTop_toBottomOf="@+id/button_mood"
-            tools:layout_editor_absoluteX="16dp"
-            tools:text="My name is Kevin, I love codiing " />
+            android:layout_marginTop="8dp"
+            android:text="My name is Kevin, I love codiing "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/button_mood"
+            app:layout_constraintTop_toBottomOf="@+id/button_mood" />
 
         <TextView
             android:id="@+id/textView_impression"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@{viewmodel.displayImpression}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/summary" />
+            app:layout_constraintTop_toBottomOf="@+id/summary"
+            tools:text="Text Impression" />
 
         <EditText
             android:id="@+id/editText_impression"
-            android:layout_width="70dp"
-            android:layout_height="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:autofillHints="hint"
             android:hint="Leave an impression!"
-            android:text="@={viewmodel.editImpression}"
+            android:inputType="text"
+            android:text="@={repository.editImpression}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_impression" />
 
 
         <Button
-            android:id="@+id/button_generate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Random generate"
-
-            android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/button_enter"
-            app:layout_constraintStart_toEndOf="@+id/button_enter" />
-        <!--        android:onClick="@{() -> viewmodel.generateImpression}"-->
-
-        <Button
             android:id="@+id/button_enter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-
-            android:text="Enter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> viewmodel.enterImpression()}"
+            android:padding="4dp"
+            android:text="@string/enter"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_overview"
             app:layout_constraintTop_toBottomOf="@+id/editText_impression" />
-        <!--        android:onClick="@{() -> viewmodel.enterImpression}"-->
+
+        <Button
+            android:id="@+id/button_generate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:onClick="@{() -> viewmodel.generateImpression()}"
+            android:padding="4dp"
+            android:text="Generate"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_enter"
+            app:layout_constraintStart_toStartOf="@+id/guideline_overview" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

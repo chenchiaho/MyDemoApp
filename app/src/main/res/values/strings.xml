@@ -9,4 +9,5 @@
     <string name="my_link">www.linkedin.com/in/chenchiaho</string>
     <string name="mood_field">Current Mood:</string>
     <string name="button_mood">Get Mood!</string>
+    <string name="enter">Enter</string>
 </resources>
