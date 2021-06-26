@@ -1,6 +1,7 @@
 package com.example.android.myresumeapp.repository
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.android.myresumeapp.api.RetrofitInstance
@@ -31,8 +32,10 @@ class ResumeRepository(
 
     fun getCurrentWeatherMetric() = database.currentWeatherDao().getWeatherMetric()
 
+/*
 
-//    For OverviewViewModel
+    OverviewViewModel
+*/
 
     private val moods: List<String> = listOf(
             "(👍≖‿‿≖)👍 👍(≖‿‿≖👍)", "（っ＾▿＾）",

@@ -13,15 +13,15 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
 
-class CurrentWeatherViewModel(
-    val repository: ResumeRepository
-) : ViewModel() {
+class CurrentWeatherViewModel(val repository: ResumeRepository) : ViewModel() {
 
     init {
         viewModelScope.launch {
             repository.updateCurrentWeather()
         }
     }
+
+
 
     private val _weatherData = MutableLiveData<List<WeatherResponse>>()
     val weatherData: LiveData<List<WeatherResponse>>
