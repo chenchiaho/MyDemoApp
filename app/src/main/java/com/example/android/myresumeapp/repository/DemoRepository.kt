@@ -4,15 +4,14 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.android.myresumeapp.api.RetrofitInstance
+import com.example.android.myresumeapp.api.WeatherApi
 import com.example.android.myresumeapp.database.db.CurrentWeatherDao
 import com.example.android.myresumeapp.database.db.ResumeDatabase
-import com.example.android.myresumeapp.ui.resume.ResumeViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 
-class ResumeRepository(
+class DemoRepository(
     val database: ResumeDatabase,
     val currentWeatherDao: CurrentWeatherDao,
     val context: Context
@@ -22,9 +21,10 @@ class ResumeRepository(
     suspend fun updateCurrentWeather() {
         withContext(Dispatchers.IO) {
             val weatherToday =
-                    RetrofitInstance.api.getCurrentWeatherMetric(
+                    WeatherApi.weatherData.getCurrentWeatherMetric(
                             "london"
                     )
+            Log.d("weatherdata", "${weatherToday.name}")
             currentWeatherDao.upsert(weatherToday)
         }
     }
@@ -125,8 +125,8 @@ class ResumeRepository(
 
 
     companion object {
-        fun from(appContext: Context): ResumeRepository {
-            return ResumeRepository(ResumeDatabase.getInstance(appContext),
+        fun from(appContext: Context): DemoRepository {
+            return DemoRepository(ResumeDatabase.getInstance(appContext),
                     ResumeDatabase.getInstance(appContext).currentWeatherDao(),
                     appContext)
         }

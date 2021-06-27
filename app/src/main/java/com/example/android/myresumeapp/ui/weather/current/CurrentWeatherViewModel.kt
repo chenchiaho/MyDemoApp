@@ -1,19 +1,17 @@
 package com.example.android.myresumeapp.ui.weather.current
 
-import android.util.Log
-import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.android.myresumeapp.database.db.WeatherResponse
-import com.example.android.myresumeapp.repository.ResumeRepository
+import com.example.android.myresumeapp.database.db.WeatherEntity
+import com.example.android.myresumeapp.repository.DemoRepository
 import com.example.android.myresumeapp.util.ResponseStatus
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
 
-class CurrentWeatherViewModel(val repository: ResumeRepository) : ViewModel() {
+class CurrentWeatherViewModel(val repository: DemoRepository) : ViewModel() {
 
     init {
         viewModelScope.launch {
@@ -23,8 +21,8 @@ class CurrentWeatherViewModel(val repository: ResumeRepository) : ViewModel() {
 
 
 
-    private val _weatherData = MutableLiveData<List<WeatherResponse>>()
-    val weatherData: LiveData<List<WeatherResponse>>
+    private val _weatherData = MutableLiveData<List<WeatherEntity>>()
+    val weatherData: LiveData<List<WeatherEntity>>
         get() = _weatherData
 
     init {
@@ -36,7 +34,7 @@ class CurrentWeatherViewModel(val repository: ResumeRepository) : ViewModel() {
     }
 
 
-    val currentWeather: MutableLiveData<ResponseStatus<WeatherResponse>> = MutableLiveData()
+    val currentWeather: MutableLiveData<ResponseStatus<WeatherEntity>> = MutableLiveData()
 
 //    fun getCurrentWeather(location: String) = viewModelScope.launch {
 //        currentWeather.postValue(ResponseStatus.Loading())
@@ -45,8 +43,8 @@ class CurrentWeatherViewModel(val repository: ResumeRepository) : ViewModel() {
 //
 //    }
 
-    private fun handleCurrentWeatherResponse(response: Response<WeatherResponse>):
-            ResponseStatus<WeatherResponse> {
+    private fun handleCurrentWeatherResponse(response: Response<WeatherEntity>):
+            ResponseStatus<WeatherEntity> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return ResponseStatus.Success(resultResponse)

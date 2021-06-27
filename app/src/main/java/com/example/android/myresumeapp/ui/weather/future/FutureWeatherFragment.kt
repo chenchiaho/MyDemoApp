@@ -1,13 +1,11 @@
 package com.example.android.myresumeapp.ui.weather.future
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.android.myresumeapp.R
-import com.example.android.myresumeapp.api.WeatherAPI
+import com.example.android.myresumeapp.api.WeatherService
 import com.example.android.myresumeapp.databinding.FutureWeatherFragmentBinding
 import kotlinx.android.synthetic.main.current_weather_fragment.*
 
@@ -29,7 +27,7 @@ class FutureWeatherFragment : Fragment() {
 
         binding = FutureWeatherFragmentBinding.inflate(inflater)
 
-        val api = WeatherAPI
+        val api = WeatherService
         GlobalScope.launch(Dispatchers.Main) {
             val current = api.api.getCurrentWeatherMetric("london")
 //            temp3.text = current.body().toString()

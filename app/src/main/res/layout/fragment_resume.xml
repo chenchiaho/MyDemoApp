@@ -10,7 +10,7 @@
 
         <variable
             name="repository"
-            type="com.example.android.myresumeapp.repository.ResumeRepository" />
+            type="com.example.android.myresumeapp.repository.DemoRepository" />
 
     </data>
 

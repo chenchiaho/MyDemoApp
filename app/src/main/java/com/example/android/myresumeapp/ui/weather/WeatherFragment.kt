@@ -5,16 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.android.myresumeapp.R
-import com.example.android.myresumeapp.api.WeatherAPI
 import com.example.android.myresumeapp.databinding.FragmentWeatherBinding
-import kotlinx.android.synthetic.main.current_weather_fragment.*
-import kotlinx.android.synthetic.main.fragment_weather.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 class WeatherFragment : Fragment() {

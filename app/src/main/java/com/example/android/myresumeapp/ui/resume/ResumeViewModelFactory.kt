@@ -1,13 +1,11 @@
 package com.example.android.myresumeapp.ui.resume
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.android.myresumeapp.repository.ResumeRepository
-import com.example.android.myresumeapp.ui.weather.current.CurrentWeatherViewModel
+import com.example.android.myresumeapp.repository.DemoRepository
 
 class ResumeViewModelFactory(
-    private val repository: ResumeRepository
+    private val repository: DemoRepository
     ): ViewModelProvider.Factory {
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {

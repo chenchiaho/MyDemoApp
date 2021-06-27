@@ -1,18 +1,10 @@
 package com.example.android.myresumeapp.ui.resume
 
-import android.app.Application
-import android.content.Context
-import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.databinding.Bindable
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.android.myresumeapp.repository.ResumeRepository
+import com.example.android.myresumeapp.repository.DemoRepository
 
-class ResumeViewModel(val repository: ResumeRepository) : ViewModel(){
+class ResumeViewModel(val repository: DemoRepository) : ViewModel(){
 
 
 
