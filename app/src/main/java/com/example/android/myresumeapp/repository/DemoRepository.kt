@@ -25,7 +25,7 @@ class DemoRepository(
                             "london"
                     )
             Log.d("weatherdata", "${weatherToday.name}")
-            currentWeatherDao.upsert(weatherToday)
+//            currentWeatherDao.upsert(weatherToday)
         }
     }
 
