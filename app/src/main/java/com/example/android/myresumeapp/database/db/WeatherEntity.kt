@@ -10,6 +10,6 @@ class WeatherEntity (
     val id: Long,
     val city: String,
     val temperature: Double,
-    val icon: String
+//    val icon: String
 
 )

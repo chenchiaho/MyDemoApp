@@ -8,5 +8,5 @@ class WeatherParcel (
         val id: Long,
         val city: String,
         val temperature: Double,
-        val icon: String
+//        val icon: String
 ): Parcelable

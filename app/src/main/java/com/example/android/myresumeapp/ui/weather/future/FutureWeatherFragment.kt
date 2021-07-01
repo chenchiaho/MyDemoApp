@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.android.myresumeapp.api.WeatherApi
 import com.example.android.myresumeapp.api.WeatherService
 import com.example.android.myresumeapp.databinding.FutureWeatherFragmentBinding
 import kotlinx.android.synthetic.main.current_weather_fragment.*
@@ -27,11 +28,11 @@ class FutureWeatherFragment : Fragment() {
 
         binding = FutureWeatherFragmentBinding.inflate(inflater)
 
-//        val api = WeatherService
-//        GlobalScope.launch(Dispatchers.Main) {
-//            val current = api.api.getCurrentWeatherMetric("london")
-//            temp3.text = current.body().toString()
-//        }
+        val api = WeatherApi
+        GlobalScope.launch(Dispatchers.Main) {
+            val current = api.weatherData.getCurrentWeatherMetric("london")
+            temp3.text = current.name
+        }
 
         return binding.root
     }

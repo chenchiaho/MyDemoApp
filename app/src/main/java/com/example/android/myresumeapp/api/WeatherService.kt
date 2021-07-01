@@ -39,6 +39,10 @@ interface WeatherService {
 
 }
 
+//fun WeatherContainer.all(): List<WeatherParcel> {
+//    return
+//}
+
 private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
@@ -49,6 +53,6 @@ private val retrofit = Retrofit.Builder()
         .baseUrl(Constants.BASE_URL)
         .build()
 
-object  WeatherApi {
+object WeatherApi {
     val weatherData: WeatherService = retrofit.create(WeatherService::class.java)
 }
