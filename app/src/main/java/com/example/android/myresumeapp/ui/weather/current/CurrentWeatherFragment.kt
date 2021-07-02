@@ -1,25 +1,23 @@
 package com.example.android.myresumeapp.ui.weather.current
 
 import android.os.Bundle
-import android.text.Html
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.android.myresumeapp.R
 import com.example.android.myresumeapp.api.WeatherApi
 import com.example.android.myresumeapp.databinding.CurrentWeatherFragmentBinding
 import com.example.android.myresumeapp.repository.DemoRepository
 import kotlinx.android.synthetic.main.current_weather_fragment.*
-import kotlinx.android.synthetic.main.future_weather_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class CurrentWeatherFragment : Fragment() {
@@ -30,8 +28,8 @@ class CurrentWeatherFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         val binding: CurrentWeatherFragmentBinding = DataBindingUtil.inflate(
                 inflater,
@@ -40,6 +38,7 @@ class CurrentWeatherFragment : Fragment() {
         )
         binding.lifecycleOwner = viewLifecycleOwner
         binding.currentWeatherViewmodel = viewModel
+
 
         val api = WeatherApi
         GlobalScope.launch(Dispatchers.Main) {
@@ -55,6 +54,16 @@ class CurrentWeatherFragment : Fragment() {
             textView_humidity.text = "Humidity: ${current.main.humidity}%"
             textView_visibility.text = "Visibility: ${current.visibility / 1000}Km"
 
+            val imageURL = "http://openweathermap.org/img/wn/${current.weatherList[0].icon}.png"
+            imageURL.let {
+                val imgUri = imageURL.toUri().buildUpon().scheme("https").build()
+                Glide.with(imageView_condition_icon.context)
+                        .load(imgUri)
+                        .apply(RequestOptions()
+                                .placeholder(R.drawable.loading_animation)
+                                .error(R.drawable.outline_broken_image))
+                        .into(imageView_condition_icon)
+            }
         }
 
 

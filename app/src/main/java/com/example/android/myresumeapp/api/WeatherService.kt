@@ -11,7 +11,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-//http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=7c7534c88bf9c7439612b68bebff8e51
+//http://openweathermap.org/img/wn/01d.png
 
 //http://api.openweathermap.org/data/2.5/weather?q=london&appid=7c7534c88bf9c7439612b68bebff8e51&units=metric
 
