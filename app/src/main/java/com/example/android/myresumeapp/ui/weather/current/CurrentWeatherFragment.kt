@@ -45,8 +45,16 @@ class CurrentWeatherFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             val current = api.weatherData.getCurrentWeatherMetric("london")
             textView_city.text = current.name
-            textView_temperature.text = current.main.temp.toString()
             textView_condition.text = current.weatherList[0].description
+
+            textView_temperature.text = "${current.main.temp}°C"
+
+            textView_feels_like_temperature.text = "Feels like ${current.main.feelLike}°C"
+            textView_min_temp.text = "Min: ${current.main.minTemp}°C"
+            textView_max_temp.text = "Max: ${current.main.maxTemp}°C"
+            textView_humidity.text = "Humidity: ${current.main.humidity}%"
+            textView_visibility.text = "Visibility: ${current.visibility / 1000}Km"
+
         }
 
 

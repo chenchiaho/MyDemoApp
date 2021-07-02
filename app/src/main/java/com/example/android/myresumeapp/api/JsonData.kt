@@ -11,7 +11,8 @@ data class WeatherJson(
 data class WeatherContainer(
         @Json(name = "weather") val weatherList: List<ParseWeather>,
         @Json(name = "main") val main: Main,
-        @Json(name = "name") val name: String
+        @Json(name = "name") val name: String,
+        @Json(name = "visibility") val visibility: Double
 )
 
 @JsonClass(generateAdapter = true)
@@ -22,5 +23,9 @@ data class ParseWeather (
 
 @JsonClass(generateAdapter = true)
 data class Main (
-    @Json(name = "temp") val temp: Double
+    @Json(name = "temp") val temp: Double,
+    @Json(name = "feels_like") val feelLike: Double,
+    @Json(name = "temp_min") val minTemp: Double,
+    @Json(name = "temp_max") val maxTemp: Double,
+    @Json(name = "humidity") val humidity: Double
 )

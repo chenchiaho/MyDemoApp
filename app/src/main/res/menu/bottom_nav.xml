@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/resumeFragment"
-        android:icon="@drawable/ic_today"
+        android:icon="@drawable/outline_account_circle"
         android:title="Overview"/>
     <item
         android:id="@+id/currentWeatherFragment"
-        android:icon="@drawable/ic_today"
-        android:title="Today"/>
+        android:icon="@drawable/ic_sunny"
+        android:title="Forcast"/>
     <item
         android:id="@+id/futureWeatherFragment"
         android:icon="@drawable/ic_week"
