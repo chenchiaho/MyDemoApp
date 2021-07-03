@@ -19,19 +19,20 @@ class CurrentWeatherViewModel(val repository: DemoRepository) : ViewModel() {
         }
     }
 
+    val weatherData = repository.currentWeather
 
 
-    private val _weatherData = MutableLiveData<List<WeatherEntity>>()
-    val weatherData: LiveData<List<WeatherEntity>>
-        get() = _weatherData
-
-    init {
-        try {
-            _weatherData.value = repository.getCurrentWeatherMetric()
-        } catch (e: Exception) {
-
-        }
-    }
+//    private val _weatherData = MutableLiveData<List<WeatherEntity>>()
+//    val weatherData: LiveData<List<WeatherEntity>>
+//        get() = _weatherData
+//
+//    init {
+//        try {
+//            _weatherData.value = repository.getCurrentWeatherMetric()
+//        } catch (e: Exception) {
+//
+//        }
+//    }
 
 
     val currentWeather: MutableLiveData<ResponseStatus<WeatherEntity>> = MutableLiveData()

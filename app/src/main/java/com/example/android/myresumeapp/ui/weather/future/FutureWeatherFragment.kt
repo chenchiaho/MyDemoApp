@@ -28,11 +28,11 @@ class FutureWeatherFragment : Fragment() {
 
         binding = FutureWeatherFragmentBinding.inflate(inflater)
 
-        val api = WeatherApi
-        GlobalScope.launch(Dispatchers.Main) {
-            val current = api.weatherData.getCurrentWeatherMetric("london")
-            temp3.text = current.name
-        }
+//        val api = WeatherApi
+//        GlobalScope.launch(Dispatchers.Main) {
+//            val current = api.weatherData.getCurrentWeatherMetric("london")
+//            temp3.text = current.name
+//        }
 
         return binding.root
     }

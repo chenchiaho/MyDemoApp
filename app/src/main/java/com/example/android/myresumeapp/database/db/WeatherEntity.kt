@@ -7,8 +7,8 @@ import com.squareup.moshi.Json
 @Entity(tableName = "weather_table")
 class WeatherEntity(
 
-        @PrimaryKey
-        val id: Long,
+        @PrimaryKey(autoGenerate = true)
+        val id: Int,
         val name: String,
         val description: String,
         val visibility: Double,

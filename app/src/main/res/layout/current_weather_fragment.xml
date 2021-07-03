@@ -100,7 +100,7 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/merriweatherregular"
             android:textSize="16sp"
-            android:textColor="#1F3331"
+            android:textColor="#70604F"
             app:layout_constraintStart_toEndOf="@+id/textView_max_temp"
             app:layout_constraintTop_toBottomOf="@+id/card_view"
             tools:text="Min: 16.0°C" />
@@ -112,7 +112,7 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/merriweatherregular"
             android:textSize="16sp"
-            android:textColor="#1F3331"
+            android:textColor="#70604F"
             app:layout_constraintStart_toStartOf="@+id/card_view"
             app:layout_constraintTop_toBottomOf="@+id/card_view"
             tools:text="Max: 27.0°C" />
@@ -124,7 +124,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/merriweatherregular"
             android:textSize="18sp"
-            android:textColor="#1F3331"
+            android:textColor="#70604F"
             app:layout_constraintStart_toStartOf="@+id/textView_max_temp"
             app:layout_constraintTop_toBottomOf="@+id/textView_max_temp"
             tools:text="Humidity: 50%" />
@@ -136,7 +136,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/merriweatherregular"
             android:textSize="18sp"
-            android:textColor="#1F3331"
+            android:textColor="#70604F"
             app:layout_constraintStart_toStartOf="@+id/textView_humidity"
             app:layout_constraintTop_toBottomOf="@+id/textView_humidity"
             tools:text="Visibility: 20 km" />

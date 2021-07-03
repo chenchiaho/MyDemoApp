@@ -36,36 +36,28 @@ fun List<WeatherParcel>.asDatabaseModels(): List<WeatherEntity> {
     }
 }
 
+fun WeatherJson.all(): List<WeatherParcel> {
+    return weatherJson.values.flatMap { it.asDomainModels() }
+}
 
-//@JvmName("asDomainModelsNetworkWeather")
-//fun List<ParseWeather>.asDomainModels(): List<WeatherParcel> {
-//    return map {
-//        it.asDomainModel()
-//    }
-//}
-//
-//@JvmName("asDatabseModelsNetworkWeather")
-//fun List<ParseWeather>.asDatabaseModels(): List<WeatherEntity> {
-//    return map {
-//        it.asDatabaseModel()
-//    }
-//}
-//
-//
-//fun ParseWeather.asDomainModel(): WeatherParcel {
-//    return WeatherParcel(
-//            id = id,
-//            city = city,
-//            temperature = temperature,
-//            icon = icon
-//    )
-//}
-//
-//fun ParseWeather.asDatabaseModel(): WeatherEntity {
-//    return WeatherEntity(
-//            id = id,
-//            city = city,
-//            temperature = temperature,
-//            icon = icon
-//    )
-//}
+@JvmName("asDomainModelsNetworkWeather")
+fun List<WeatherContainer>.asDomainModels(): List<WeatherParcel> {
+    return map {
+        it.asDomainModel()
+    }
+}
+
+fun WeatherContainer.asDomainModel(): WeatherParcel {
+    return WeatherParcel(
+            id = id,
+            name = name,
+            description = weatherList[0].description,
+            visibility = visibility,
+            temp = main.temp,
+            feelsLike = main.feelLike,
+            minTemp = main.minTemp,
+            maxTemp = main.maxTemp,
+            humidity = main.humidity,
+            icon = weatherList[0].icon
+    )
+}

@@ -25,7 +25,7 @@ interface WeatherService {
             apiKey: String = API_KEY,
             @Query("units")
             units: String = "metric"
-    ): WeatherContainer
+    ): WeatherJson
 
 //    @GET("current_Imperial")
 //    suspend fun getCurrentWeatherImperial (

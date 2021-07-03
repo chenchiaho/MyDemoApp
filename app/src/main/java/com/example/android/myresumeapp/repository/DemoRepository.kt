@@ -1,10 +1,10 @@
 package com.example.android.myresumeapp.repository
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.android.myresumeapp.api.WeatherApi
+import androidx.lifecycle.Transformations
+import com.example.android.myresumeapp.api.*
 import com.example.android.myresumeapp.database.db.CurrentWeatherDao
 import com.example.android.myresumeapp.database.db.ResumeDatabase
 import kotlinx.coroutines.Dispatchers
@@ -13,24 +13,26 @@ import kotlinx.coroutines.withContext
 
 class DemoRepository(
     val database: ResumeDatabase,
-    val currentWeatherDao: CurrentWeatherDao,
     val context: Context
 ) {
 
+    val currentWeather: LiveData<List<WeatherParcel>> =
+            Transformations.map(database.currentWeatherDao().getWeatherMetric()) {
+                it.asDomainModel()
+            }
 
     suspend fun updateCurrentWeather() {
         withContext(Dispatchers.IO) {
             val weatherToday =
-                    WeatherApi.weatherData.getCurrentWeatherMetric(
-                            "london"
-                    )
-            Log.d("weatherdata", "${weatherToday.name}")
-//            currentWeatherDao.upsert(*weatherToday.all().asDatabaseModels().toTyp)
+                    WeatherApi.weatherData.getCurrentWeatherMetric("london")
+            database.currentWeatherDao().insertAll(*weatherToday.all().asDatabaseModels().toTypedArray())
         }
     }
 
 
     fun getCurrentWeatherMetric() = database.currentWeatherDao().getWeatherMetric()
+
+
 
 /*
 
@@ -127,7 +129,7 @@ class DemoRepository(
     companion object {
         fun from(appContext: Context): DemoRepository {
             return DemoRepository(ResumeDatabase.getInstance(appContext),
-                    ResumeDatabase.getInstance(appContext).currentWeatherDao(),
+//                    ResumeDatabase.getInstance(appContext).currentWeatherDao(),
                     appContext)
         }
     }

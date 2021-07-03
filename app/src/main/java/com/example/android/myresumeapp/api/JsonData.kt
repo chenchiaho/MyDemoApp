@@ -4,11 +4,12 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 data class WeatherJson(
-        val weatherJson: List<WeatherContainer>
+        val weatherJson: Map<String, List<WeatherContainer>>
 )
 
 @JsonClass(generateAdapter = true)
 data class WeatherContainer(
+        val id: Int,
         @Json(name = "weather") val weatherList: List<ParseWeather>,
         @Json(name = "main") val main: Main,
         @Json(name = "name") val name: String,
