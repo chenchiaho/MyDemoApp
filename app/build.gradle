@@ -16,7 +16,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.android.myresumeapp"
+        applicationId "com.example.android.mydemoapp"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1

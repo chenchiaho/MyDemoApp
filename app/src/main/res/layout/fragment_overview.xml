@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.android.mydemoapp.ui.overview.OverviewViewModel" />
+
+        <variable
+            name="repository"
+            type="com.example.android.mydemoapp.repository.DemoRepository" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.overview.OverviewFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
+
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/my_name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/email_field"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_name" />
+
+        <TextView
+            android:id="@+id/textView_email2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="email"
+            android:text="@string/email"
+            android:textColorLink="#81AEC6"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView_email"
+            app:layout_constraintTop_toBottomOf="@+id/textView_email" />
+
+        <TextView
+            android:id="@+id/textView_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/link_field"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="@+id/textView_email"
+            app:layout_constraintTop_toBottomOf="@+id/textView_email2" />
+
+
+        <TextView
+            android:id="@+id/textView_link2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:text="@string/my_link"
+            android:textColorLink="#81AEC6"
+            app:layout_constraintStart_toStartOf="@+id/textView_link"
+            app:layout_constraintTop_toBottomOf="@+id/textView_link" />
+
+        <TextView
+            android:id="@+id/textView_mood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/mood_field"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="@+id/textView_link"
+            app:layout_constraintTop_toBottomOf="@+id/textView_link2" />
+
+        <TextView
+            android:id="@+id/textView_mood2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.currentMood}"
+
+            app:layout_constraintStart_toStartOf="@+id/textView_mood"
+            app:layout_constraintTop_toBottomOf="@+id/textView_mood"
+            tools:text="Test Mood" />
+
+        <Button
+            android:id="@+id/button_mood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> viewmodel.onChangeMoodClick()}"
+
+            android:text="@string/button_mood"
+            app:layout_constraintStart_toStartOf="@+id/textView_mood"
+            app:layout_constraintTop_toBottomOf="@+id/textView_mood2" />
+
+
+        <TextView
+            android:id="@+id/summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="My name is Kevin, I love codiing "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/button_mood"
+            app:layout_constraintTop_toBottomOf="@+id/button_mood" />
+
+        <TextView
+            android:id="@+id/textView_impression"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{viewmodel.displayImpression}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/summary"
+            tools:text="Text Impression" />
+
+        <EditText
+            android:id="@+id/editText_impression"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:autofillHints="hint"
+            android:hint="Leave an impression!"
+            android:inputType="text"
+            android:text="@={repository.editImpression}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_impression" />
+
+
+        <Button
+            android:id="@+id/button_enter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> viewmodel.enterImpression()}"
+            android:padding="4dp"
+            android:text="@string/enter"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_overview"
+            app:layout_constraintTop_toBottomOf="@+id/editText_impression" />
+
+        <Button
+            android:id="@+id/button_generate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:onClick="@{() -> viewmodel.generateImpression()}"
+            android:padding="4dp"
+            android:text="Generate"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_enter"
+            app:layout_constraintStart_toStartOf="@+id/guideline_overview" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

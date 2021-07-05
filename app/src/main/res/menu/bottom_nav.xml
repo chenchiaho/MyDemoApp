@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/resumeFragment"
+        android:id="@+id/overviewFragment"
         android:icon="@drawable/outline_account_circle"
         android:title="Overview"/>
     <item

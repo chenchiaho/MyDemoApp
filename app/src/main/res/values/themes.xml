@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MyResumeApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.MyDemoApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#A68E75</item>
         <item name="colorPrimaryVariant">#816F5C</item>

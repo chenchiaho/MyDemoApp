@@ -3,36 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/resumeFragment">
+    app:startDestination="@id/overviewFragment">
 
     <fragment
-        android:id="@+id/resumeFragment"
-        android:name="com.example.android.myresumeapp.ui.resume.ResumeFragment"
-        android:label="fragment_resume"
-        tools:layout="@layout/fragment_resume" />
-    <fragment
-        android:id="@+id/weatherFragment"
-        android:name="com.example.android.myresumeapp.ui.weather.WeatherFragment"
-        android:label="fragment_weather"
-        tools:layout="@layout/fragment_weather" />
+        android:id="@+id/overviewFragment"
+        android:name="com.example.android.mydemoapp.ui.overview.OverviewFragment"
+        android:label="fragment_overview"
+        tools:layout="@layout/fragment_overview" />
     <fragment
         android:id="@+id/currentWeatherFragment"
-        android:name="com.example.android.myresumeapp.ui.weather.current.CurrentWeatherFragment"
+        android:name="com.example.android.mydemoapp.ui.weather.current.CurrentWeatherFragment"
         android:label="current_weather_fragment"
         tools:layout="@layout/current_weather_fragment"/>
     <fragment
         android:id="@+id/futureWeatherFragment"
-        android:name="com.example.android.myresumeapp.ui.weather.future.FutureWeatherFragment"
+        android:name="com.example.android.mydemoapp.ui.weather.future.FutureWeatherFragment"
         android:label="future_weather_fragment"
         tools:layout="@layout/future_weather_fragment" />
     <fragment
         android:id="@+id/futureDetailFragment"
-        android:name="com.example.android.myresumeapp.ui.weather.future.FutureDetailFragment"
+        android:name="com.example.android.mydemoapp.ui.weather.future.FutureDetailFragment"
         android:label="future_detail_fragment"
         tools:layout="@layout/future_detail_fragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.android.myresumeapp.ui.settings.settingsFragment"
+        android:name="com.example.android.mydemoapp.ui.settings.settingsFragment"
         android:label="settingsFragment" />
 
 </navigation>
