@@ -1,9 +1,8 @@
 package com.example.android.mydemoapp.ui.weather.current
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.android.mydemoapp.database.WeatherEntity
+import com.example.android.mydemoapp.database.current.WeatherEntity
 import com.example.android.mydemoapp.repository.DemoRepository
 import com.example.android.mydemoapp.util.ResponseStatus
 import kotlinx.coroutines.launch

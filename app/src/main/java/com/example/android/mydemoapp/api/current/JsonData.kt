@@ -1,4 +1,4 @@
-package com.example.android.mydemoapp.api
+package com.example.android.mydemoapp.api.current
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -6,11 +6,11 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class WeatherContainer(
-        val id: Int,
-        @Json(name = "weather") val weatherList: List<ParseWeather>,
-        @Json(name = "main") val main: Main,
-        @Json(name = "name") val name: String,
-        @Json(name = "visibility") val visibility: Double
+    val id: Int,
+    @Json(name = "weather") val weatherList: List<ParseWeather>,
+    @Json(name = "main") val main: Main,
+    @Json(name = "name") val name: String,
+    @Json(name = "visibility") val visibility: Double
 )
 
 @JsonClass(generateAdapter = true)
@@ -27,3 +27,4 @@ data class Main (
     @Json(name = "temp_max") val maxTemp: Double,
     @Json(name = "humidity") val humidity: Double
 )
+

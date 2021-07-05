@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.android.mydemoapp.api.*
+import com.example.android.mydemoapp.api.current.WeatherParcel
+import com.example.android.mydemoapp.api.future.FutureWeatherParcel
 import com.example.android.mydemoapp.database.DemoDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,17 +17,31 @@ class DemoRepository(
         val context: Context
 ) {
     val currentWeatherDao = database.currentWeatherDao()
+    val futureWeatherDao = database.futureWeatherDao()
 
     val currentWeather: LiveData<List<WeatherParcel>> =
             Transformations.map(currentWeatherDao.getWeatherMetric()) {
-                it.asDomainModel()
+                it.asDomainModels()
             }
+
+    val futureWeather: LiveData<List<FutureWeatherParcel>> =
+        Transformations.map(futureWeatherDao.getFutureWeatherMetric()) {
+            it.asFutureDomainModels()
+        }
 
     suspend fun updateCurrentWeather() {
         withContext(Dispatchers.IO) {
             val weatherToday =
                     WeatherApi.weatherData.getCurrentWeatherMetric("london")
             currentWeatherDao.insertAll(weatherToday.asDatabaseModels())
+        }
+    }
+
+    suspend fun updateFutureWeather() {
+        withContext(Dispatchers.IO) {
+            val weatherFuture =
+                WeatherApi.weatherData.getFutureWeatherMetric("london")
+            futureWeatherDao.insertAllFuture(weatherFuture.asDatabaseModels())
         }
     }
 

@@ -1,12 +1,10 @@
-package com.example.android.mydemoapp.database
+package com.example.android.mydemoapp.api.current
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "weather_table")
-
-data class WeatherEntity(
-        @PrimaryKey(autoGenerate = true)
+@Parcelize
+class WeatherParcel (
         val id: Int,
         val name: String,
         val description: String,
@@ -17,4 +15,4 @@ data class WeatherEntity(
         val maxTemp: Double,
         val humidity: Double,
         val icon: String
-)
+): Parcelable
