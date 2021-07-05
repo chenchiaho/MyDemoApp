@@ -17,9 +17,9 @@
         tools:layout="@layout/current_weather_fragment"/>
     <fragment
         android:id="@+id/futureWeatherFragment"
-        android:name="com.example.android.mydemoapp.ui.weather.future.FutureWeatherFragment"
+        android:name="com.example.android.mydemoapp.ui.weather.future.FutureListFragment"
         android:label="future_weather_fragment"
-        tools:layout="@layout/future_weather_fragment" />
+        tools:layout="@layout/future_list_fragment" />
     <fragment
         android:id="@+id/futureDetailFragment"
         android:name="com.example.android.mydemoapp.ui.weather.future.FutureDetailFragment"

@@ -28,11 +28,12 @@ class CurrentWeatherFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
+
         val binding: CurrentWeatherFragmentBinding = DataBindingUtil.inflate(
                 inflater,
                 R.layout.current_weather_fragment,
-                container, false
-        )
+                container, false)
+
         binding.lifecycleOwner = viewLifecycleOwner
         binding.currentWeatherViewmodel = viewModel
 
