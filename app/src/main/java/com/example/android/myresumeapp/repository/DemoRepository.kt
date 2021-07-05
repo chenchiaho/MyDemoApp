@@ -25,7 +25,7 @@ class DemoRepository(
         withContext(Dispatchers.IO) {
             val weatherToday =
                     WeatherApi.weatherData.getCurrentWeatherMetric("london")
-            database.currentWeatherDao().insertAll(*weatherToday.all().asDatabaseModels().toTypedArray())
+            database.currentWeatherDao().insertAll(weatherToday.asDatabaseModels())
         }
     }
 

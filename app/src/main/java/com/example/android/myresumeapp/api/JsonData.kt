@@ -3,9 +3,10 @@ package com.example.android.myresumeapp.api
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
-data class WeatherJson(
-        val weatherJson: Map<String, List<WeatherContainer>>
-)
+//@JsonClass(generateAdapter = true)
+//data class WeatherJson(
+//        val weatherJson: List<WeatherContainer>
+//)
 
 @JsonClass(generateAdapter = true)
 data class WeatherContainer(

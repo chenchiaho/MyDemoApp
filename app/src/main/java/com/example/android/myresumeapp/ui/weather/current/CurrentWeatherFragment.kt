@@ -44,31 +44,29 @@ class CurrentWeatherFragment : Fragment() {
 
         viewModel.weatherData.observe(viewLifecycleOwner, Observer {
 
-                    if (it != null) {
-                        val data = it
-                        Log.d("Tag", "$data")}
+            val data = it[0]
 
-//            textView_city.text = data
-//                    textView_condition.text = data.description
-//
-//                    textView_temperature.text = "${data.temp}°C"
-//
-//                    textView_feels_like_temperature.text = "Feels like ${data.feelsLike}°C"
-//                    textView_min_temp.text = "Min: ${data.minTemp}°C"
-//                    textView_max_temp.text = "Max: ${data.maxTemp}°C"
-//                    textView_humidity.text = "Humidity: ${data.humidity}%"
-//                    textView_visibility.text = "Visibility: ${data.visibility / 1000}Km"
-//
-//                    val imageURL = "http://openweathermap.org/img/wn/${data.icon}.png"
-//                    imageURL.let {
-//                        val imgUri = imageURL.toUri().buildUpon().scheme("https").build()
-//                        Glide.with(imageView_condition_icon.context)
-//                                .load(imgUri)
-//                                .apply(RequestOptions()
-//                                        .placeholder(R.drawable.loading_animation)
-//                                        .error(R.drawable.outline_broken_image))
-//                                .into(imageView_condition_icon)
-//                    }
+            textView_city.text = data.name
+            textView_condition.text = data.description
+
+            textView_temperature.text = "${data.temp}°C"
+
+            textView_feels_like_temperature.text = "Feels like ${data.feelsLike}°C"
+            textView_min_temp.text = "Min: ${data.minTemp}°C"
+            textView_max_temp.text = "Max: ${data.maxTemp}°C"
+            textView_humidity.text = "Humidity: ${data.humidity}%"
+            textView_visibility.text = "Visibility: ${data.visibility / 1000}Km"
+
+            val imageURL = "http://openweathermap.org/img/wn/${data.icon}.png"
+            imageURL.let {
+                val imgUri = imageURL.toUri().buildUpon().scheme("https").build()
+                Glide.with(imageView_condition_icon.context)
+                        .load(imgUri)
+                        .apply(RequestOptions()
+                                .placeholder(R.drawable.loading_animation)
+                                .error(R.drawable.outline_broken_image))
+                        .into(imageView_condition_icon)
+            }
 
         })
 

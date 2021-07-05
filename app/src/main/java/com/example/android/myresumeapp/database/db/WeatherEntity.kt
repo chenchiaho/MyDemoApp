@@ -3,10 +3,11 @@ package com.example.android.myresumeapp.database.db
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
+import java.io.Serializable
 
-@Entity(tableName = "weather_table")
-class WeatherEntity(
-
+@Entity(
+        tableName = "weather_table")
+data class WeatherEntity(
         @PrimaryKey(autoGenerate = true)
         val id: Int,
         val name: String,
@@ -18,5 +19,4 @@ class WeatherEntity(
         val maxTemp: Double,
         val humidity: Double,
         val icon: String
-
 )
