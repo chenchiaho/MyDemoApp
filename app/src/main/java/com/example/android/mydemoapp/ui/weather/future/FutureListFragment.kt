@@ -36,6 +36,9 @@ class FutureListFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
+        val futureAdapter = FutureListAdapter()
+        binding.recyclerView.adapter = futureAdapter
+
 
         return binding.root
     }

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class FutureWeatherParcel (
+data class FutureWeatherParcel (
     val id: Int,
     val name: String,
     val description: String,

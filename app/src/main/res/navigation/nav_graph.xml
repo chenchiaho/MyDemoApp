@@ -19,7 +19,11 @@
         android:id="@+id/futureWeatherFragment"
         android:name="com.example.android.mydemoapp.ui.weather.future.FutureListFragment"
         android:label="future_weather_fragment"
-        tools:layout="@layout/future_list_fragment" />
+        tools:layout="@layout/future_list_fragment" >
+        <action
+            android:id="@+id/action_futureWeatherFragment_to_futureDetailFragment"
+            app:destination="@id/futureDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/futureDetailFragment"
         android:name="com.example.android.mydemoapp.ui.weather.future.FutureDetailFragment"

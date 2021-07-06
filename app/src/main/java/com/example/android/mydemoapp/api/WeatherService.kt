@@ -2,6 +2,7 @@ package com.example.android.mydemoapp.api
 
 import com.example.android.mydemoapp.api.current.WeatherContainer
 import com.example.android.mydemoapp.api.future.FutureWeatherContainer
+
 import com.example.android.mydemoapp.util.Constants.Companion.API_KEY
 import com.example.android.mydemoapp.util.Constants
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory

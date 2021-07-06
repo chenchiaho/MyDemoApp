@@ -4,6 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="future"
+            type="com.example.android.mydemoapp.api.future.FutureWeatherParcel" />
+
+    </data>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,6 +38,7 @@
 
                 <ImageView
                     android:id="@+id/imageView_condition_icon"
+
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:background="#A68E75" />
