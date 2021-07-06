@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class FutureWeatherParcel (
-    val id: Int,
+//    val id: Int,
     val name: String,
     val description: String,
     val visibility: Double,

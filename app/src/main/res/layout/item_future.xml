@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:text="123"
                 android:fontFamily="@font/merriweatherregular"
                 app:layout_constraintStart_toEndOf="@+id/card_view"
                 app:layout_constraintTop_toTopOf="@+id/card_view"

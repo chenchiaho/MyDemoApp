@@ -6,8 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "future_table")
 
 data class FutureEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
+
     val name: String,
     val description: String,
     val visibility: Double,
@@ -18,4 +17,7 @@ data class FutureEntity(
     val humidity: Double,
     val icon: String,
     val date: String
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}

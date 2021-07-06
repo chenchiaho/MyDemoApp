@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.mydemoapp.R
 import com.example.android.mydemoapp.databinding.FutureListFragmentBinding
@@ -38,6 +39,10 @@ class FutureListFragment : Fragment() {
 
         val futureAdapter = FutureListAdapter()
         binding.recyclerView.adapter = futureAdapter
+
+        viewModel.futureWeather.observe(viewLifecycleOwner, Observer { future ->
+            futureAdapter.submitList(future)
+        })
 
 
         return binding.root
