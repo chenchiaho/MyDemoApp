@@ -1,5 +1,6 @@
 package com.example.android.mydemoapp.api
 
+import android.util.Log
 import com.example.android.mydemoapp.api.current.WeatherContainer
 import com.example.android.mydemoapp.api.current.WeatherParcel
 import com.example.android.mydemoapp.api.future.FutureWeatherContainer
@@ -40,20 +41,24 @@ fun List<WeatherEntity>.asDomainModels(): List<WeatherParcel> {
     }
 }
 
-fun FutureWeatherContainer.asDatabaseModels(): FutureEntity {
-        return FutureEntity(
-
+fun FutureWeatherContainer.asDatabaseModels(): List<FutureEntity> {
+    var list = mutableListOf<FutureEntity>()
+    for (i in futureList.indices) {
+        var entity = FutureEntity(
                 name = city.futureName,
-                description = futureList[0].futureWeather[0].futureDescription,
-                visibility = futureList[0].futureVisibility,
-                temp = futureList[0].futureMain.futureTemp,
-                feelsLike = futureList[0].futureMain.futureFeelLike,
-                minTemp = futureList[0].futureMain.futureMin,
-                maxTemp = futureList[0].futureMain.futureMax,
-                humidity = futureList[0].futureMain.futureHumidity,
-                icon = futureList[0].futureWeather[0].futureIcon,
-                date = futureList[0].futureDate
+                description = futureList[i].futureWeather[0].futureDescription,
+                visibility = futureList[i].futureVisibility,
+                temp = futureList[i].futureMain.futureTemp,
+                feelsLike = futureList[i].futureMain.futureFeelLike,
+                minTemp = futureList[i].futureMain.futureMin,
+                maxTemp = futureList[i].futureMain.futureMax,
+                humidity = futureList[i].futureMain.futureHumidity,
+                icon = futureList[i].futureWeather[0].futureIcon,
+                date = futureList[i].futureDate
         )
+        list.add(entity)
+    }
+    return list
 }
 
 fun List<FutureEntity>.asFutureDomainModels(): List<FutureWeatherParcel> {

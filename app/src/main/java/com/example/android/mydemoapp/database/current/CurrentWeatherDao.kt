@@ -15,5 +15,5 @@ interface CurrentWeatherDao {
     suspend fun insertAll (vararg weatherEntity: WeatherEntity)
 
     @Query("SELECT * FROM weather_table")
-    fun getWeatherMetric(): LiveData<List<WeatherEntity>>
+    fun getCurrentWeatherTable(): LiveData<List<WeatherEntity>>
 }

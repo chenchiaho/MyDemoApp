@@ -20,14 +20,9 @@ class DemoRepository(
     val futureWeatherDao = database.futureWeatherDao()
 
     val currentWeather: LiveData<List<WeatherParcel>> =
-            Transformations.map(currentWeatherDao.getWeatherMetric()) {
+            Transformations.map(currentWeatherDao.getCurrentWeatherTable()) {
                 it.asDomainModels()
             }
-
-    val futureWeather: LiveData<List<FutureWeatherParcel>> =
-        Transformations.map(futureWeatherDao.getFutureWeatherMetric()) {
-            it.asFutureDomainModels()
-        }
 
     suspend fun updateCurrentWeather() {
         withContext(Dispatchers.IO) {
@@ -37,15 +32,21 @@ class DemoRepository(
         }
     }
 
+    val futureWeather: LiveData<List<FutureWeatherParcel>> =
+            Transformations.map(futureWeatherDao.getFutureWeatherTable()) {
+                it.asFutureDomainModels()
+            }
+
     suspend fun updateFutureWeather() {
         withContext(Dispatchers.IO) {
             val weatherFuture =
                 WeatherApi.weatherData.getFutureWeatherMetric("london")
-            futureWeatherDao.insertAllFuture(weatherFuture.asDatabaseModels())
+
+            weatherFuture.asDatabaseModels().forEach {
+            futureWeatherDao.insertAllFuture(it)
+            }
         }
     }
-
-
 
 
 /*

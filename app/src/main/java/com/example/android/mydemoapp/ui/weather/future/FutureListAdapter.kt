@@ -1,6 +1,8 @@
 package com.example.android.mydemoapp.ui.weather.future
 
 import android.content.ClipData
+import android.nfc.Tag
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,18 +19,20 @@ import kotlinx.android.synthetic.main.item_future.view.*
 class FutureListAdapter():
     ListAdapter<FutureWeatherParcel, FutureViewHolder>(FutureDiffCallback()) {
 
-
+//    val differ = AsyncListDiffer(this, FutureDiffCallback())
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FutureViewHolder {
         return FutureViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: FutureViewHolder, position: Int) {
         holder.bind(getItem(position))
+//        val article = differ.currentList[position]
         holder.itemView.apply {
 
-            item_max_temp.text = currentList[0].maxTemp.toString()
-            item_min_temp.text = currentList[0].minTemp.toString()
-            item_description.text = currentList[0].description
+                item_max_temp.text = currentList[position].maxTemp.toString()
+                item_min_temp.text = currentList[position].minTemp.toString()
+                item_description.text = currentList[position].description
+
         }
     }
 }

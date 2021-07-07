@@ -10,16 +10,16 @@ import kotlinx.coroutines.launch
 class FutureListViewModel(val repository: DemoRepository) : ViewModel() {
 
 
-    val futureWeather = MediatorLiveData<List<FutureWeatherParcel>>()
+    val futureWeatherData = repository.futureWeather
 
     init {
-        futureWeather.addSource(repository.futureWeather) {
-            futureWeather.value = it
-        }
-
         viewModelScope.launch {
             repository.updateFutureWeather()
         }
+//        futureWeather.addSource(repository.futureWeather) {
+//            futureWeather.value = it
+//        }
     }
-//    val futureWeatherData = repository.futureWeather
+//    val futureWeather = MediatorLiveData<List<FutureWeatherParcel>>()
 }
+

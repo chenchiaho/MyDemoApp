@@ -40,7 +40,7 @@ class FutureListFragment : Fragment() {
         val futureAdapter = FutureListAdapter()
         binding.recyclerView.adapter = futureAdapter
 
-        viewModel.futureWeather.observe(viewLifecycleOwner, Observer { future ->
+        viewModel.futureWeatherData.observe(viewLifecycleOwner, Observer { future ->
             futureAdapter.submitList(future)
         })
 

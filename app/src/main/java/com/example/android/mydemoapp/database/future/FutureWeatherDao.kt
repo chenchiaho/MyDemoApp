@@ -13,5 +13,5 @@ interface FutureWeatherDao {
     suspend fun insertAllFuture (vararg futureEntity: FutureEntity)
 
     @Query("SELECT * FROM future_table")
-    fun getFutureWeatherMetric(): LiveData<List<FutureEntity>>
+    fun getFutureWeatherTable(): LiveData<List<FutureEntity>>
 }

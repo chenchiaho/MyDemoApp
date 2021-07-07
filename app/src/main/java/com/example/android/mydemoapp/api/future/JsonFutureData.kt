@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class FutureWeatherContainer(
-//    val id: Int,
+
     @Json(name = "city") val city: City,
     @Json(name = "list") val futureList: List<FutureList>
 )
