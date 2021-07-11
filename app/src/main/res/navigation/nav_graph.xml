@@ -22,11 +22,11 @@
         tools:layout="@layout/future_list_fragment" >
         <action
             android:id="@+id/action_showDetail"
-            app:destination="@id/futureDetailFragment" />
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/futureDetailFragment"
-        android:name="com.example.android.mydemoapp.ui.weather.future.FutureDetailFragment"
+        android:id="@+id/detailFragment"
+        android:name="com.example.android.mydemoapp.ui.weather.future.DetailFragment"
         android:label="future_detail_fragment"
         tools:layout="@layout/future_detail_fragment" >
         <argument
