@@ -16,17 +16,16 @@ import com.example.android.mydemoapp.databinding.ItemFutureBinding
 import kotlinx.android.synthetic.main.future_list_fragment.view.*
 import kotlinx.android.synthetic.main.item_future.view.*
 
-class FutureListAdapter():
+class FutureListAdapter(private val clickListener: OnClickListener):
     ListAdapter<FutureWeatherParcel, FutureViewHolder>(FutureDiffCallback()) {
 
-//    val differ = AsyncListDiffer(this, FutureDiffCallback())
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FutureViewHolder {
         return FutureViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: FutureViewHolder, position: Int) {
-        holder.bind(getItem(position))
-//        val article = differ.currentList[position]
+        holder.bind(getItem(position), clickListener)
+
         holder.itemView.apply {
 
                 item_max_temp.text = currentList[position].maxTemp.toString()
@@ -39,8 +38,9 @@ class FutureListAdapter():
 
 class FutureViewHolder(private val binding: ItemFutureBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(futureWeatherParcel: FutureWeatherParcel) {
+    fun bind(futureWeatherParcel: FutureWeatherParcel, clickListener: OnClickListener) {
         binding.future = futureWeatherParcel
+        binding.clickListener = clickListener
     }
 
     companion object {
@@ -56,10 +56,14 @@ class FutureViewHolder(private val binding: ItemFutureBinding): RecyclerView.Vie
 class FutureDiffCallback : DiffUtil.ItemCallback<FutureWeatherParcel>() {
 
     override fun areItemsTheSame(oldItem: FutureWeatherParcel, newItem: FutureWeatherParcel): Boolean {
-        return oldItem.date == newItem.date
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: FutureWeatherParcel, newItem: FutureWeatherParcel): Boolean {
         return oldItem == newItem
     }
+}
+
+class OnClickListener(private val clickHandler: (futureWeather: FutureWeatherParcel) -> Unit) {
+    fun onClick(futureWeather: FutureWeatherParcel) = clickHandler(futureWeather)
 }

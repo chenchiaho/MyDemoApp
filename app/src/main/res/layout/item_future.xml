@@ -10,6 +10,10 @@
             name="future"
             type="com.example.android.mydemoapp.api.future.FutureWeatherParcel" />
 
+        <variable
+            name="clickListener"
+            type="com.example.android.mydemoapp.ui.weather.future.OnClickListener" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -17,7 +21,9 @@
         android:layout_height="wrap_content"
         app:cardBackgroundColor="#F9F4ED"
         app:cardCornerRadius="8dp"
-        android:minHeight="80dp">
+        android:minHeight="80dp"
+        android:onClick="@{() -> clickListener.onClick(future)}"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

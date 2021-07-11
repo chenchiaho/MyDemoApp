@@ -64,7 +64,7 @@ fun FutureWeatherContainer.asDatabaseModels(): List<FutureEntity> {
 fun List<FutureEntity>.asFutureDomainModels(): List<FutureWeatherParcel> {
         return map {
                 FutureWeatherParcel(
-
+                        id = it.id,
                         name = it.name,
                         description = it.description,
                         visibility = it.visibility,
@@ -78,13 +78,3 @@ fun List<FutureEntity>.asFutureDomainModels(): List<FutureWeatherParcel> {
                 )
         }
 }
-//fun WeatherContainer.all(): List<WeatherParcel> {
-//    return WeatherContainer.values.flatMap { it.asDomainModels() }
-//}
-
-//@JvmName("asDomainModelsNetworkWeather")
-//fun List<WeatherContainer>.asDomainModels(): List<WeatherParcel> {
-//    return map {
-//        it.asDomainModel()
-//    }
-//}

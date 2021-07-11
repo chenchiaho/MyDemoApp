@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="FutureDetailViewmodel"
-            type="com.example.android.mydemoapp.ui.weather.future.FutureDetailViewModel" />
+            name="weatherDetail"
+            type="com.example.android.mydemoapp.api.future.FutureWeatherParcel" />
 
     </data>
 

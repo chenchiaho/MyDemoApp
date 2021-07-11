@@ -6,13 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.example.android.mydemoapp.R
+import com.example.android.mydemoapp.databinding.FutureDetailFragmentBinding
+import com.example.android.mydemoapp.databinding.FutureListFragmentBinding
 
 class FutureDetailFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FutureDetailFragment()
-    }
 
     private lateinit var viewModel: FutureDetailViewModel
 
@@ -20,13 +20,18 @@ class FutureDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.future_detail_fragment, container, false)
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FutureDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+        val binding: FutureDetailFragmentBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.future_detail_fragment,
+            container, false)
+
+        binding.lifecycleOwner = this
+
+        val weather = FutureDetailFragmentArgs.fromBundle(requireArguments()).selectedWeather
+        binding.weatherDetail = weather
+
+        return binding.root
     }
 
 }

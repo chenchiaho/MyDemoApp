@@ -10,6 +10,7 @@ import com.example.android.mydemoapp.api.future.FutureWeatherParcel
 import com.example.android.mydemoapp.database.DemoDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.time.LocalDateTime
 
 
 class DemoRepository(
@@ -37,7 +38,16 @@ class DemoRepository(
                 it.asFutureDomainModels()
             }
 
+
+    private fun currentTime(): String {
+        val now = LocalDateTime.now().toString()
+        return now.replace("T", " ").removeRange(19, 23)
+    }
+
     suspend fun updateFutureWeather() {
+
+        futureWeatherDao.deleteOldEntries(currentTime())
+
         withContext(Dispatchers.IO) {
             val weatherFuture =
                 WeatherApi.weatherData.getFutureWeatherMetric("london")

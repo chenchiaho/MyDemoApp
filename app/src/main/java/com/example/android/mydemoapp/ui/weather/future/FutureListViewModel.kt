@@ -1,8 +1,6 @@
 package com.example.android.mydemoapp.ui.weather.future
 
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.android.mydemoapp.api.future.FutureWeatherParcel
 import com.example.android.mydemoapp.repository.DemoRepository
 import kotlinx.coroutines.launch
@@ -16,10 +14,19 @@ class FutureListViewModel(val repository: DemoRepository) : ViewModel() {
         viewModelScope.launch {
             repository.updateFutureWeather()
         }
-//        futureWeather.addSource(repository.futureWeather) {
-//            futureWeather.value = it
-//        }
     }
-//    val futureWeather = MediatorLiveData<List<FutureWeatherParcel>>()
+
+    private val _eventFutureClicked = MutableLiveData(false)
+    val eventFutureClicked: LiveData<Boolean>
+        get() = _eventFutureClicked
+
+    fun futureOnClicked() {
+        _eventFutureClicked.value = true
+    }
+
+    fun futureClicked() {
+        _eventFutureClicked.value = false
+    }
+
 }
 

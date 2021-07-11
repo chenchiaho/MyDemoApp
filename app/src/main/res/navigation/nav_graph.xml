@@ -21,14 +21,18 @@
         android:label="future_weather_fragment"
         tools:layout="@layout/future_list_fragment" >
         <action
-            android:id="@+id/action_futureWeatherFragment_to_futureDetailFragment"
+            android:id="@+id/action_showDetail"
             app:destination="@id/futureDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/futureDetailFragment"
         android:name="com.example.android.mydemoapp.ui.weather.future.FutureDetailFragment"
         android:label="future_detail_fragment"
-        tools:layout="@layout/future_detail_fragment" />
+        tools:layout="@layout/future_detail_fragment" >
+        <argument
+            android:name="selectedWeather"
+            app:argType="com.example.android.mydemoapp.api.future.FutureWeatherParcel" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.android.mydemoapp.ui.settings.settingsFragment"

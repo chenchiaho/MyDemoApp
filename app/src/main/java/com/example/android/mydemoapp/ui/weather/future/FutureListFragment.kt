@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.android.mydemoapp.R
+import com.example.android.mydemoapp.api.future.FutureWeatherParcel
 import com.example.android.mydemoapp.databinding.FutureListFragmentBinding
 import com.example.android.mydemoapp.repository.DemoRepository
 import com.example.android.mydemoapp.ui.weather.current.CurrentWeatherViewModel
@@ -22,6 +24,8 @@ class FutureListFragment : Fragment() {
         val repository = DemoRepository.from(requireContext())
         ViewModelProvider(this, FutureListViewModelFactory(repository)).get(FutureListViewModel::class.java)
     }
+
+    private lateinit var onClickWeather: FutureWeatherParcel
 
 
     override fun onCreateView(
@@ -37,8 +41,21 @@ class FutureListFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-        val futureAdapter = FutureListAdapter()
+        val futureAdapter = FutureListAdapter(
+            OnClickListener { futureWeather ->
+                onClickWeather = futureWeather
+                viewModel.futureOnClicked()
+            }
+        )
+
         binding.recyclerView.adapter = futureAdapter
+
+        viewModel.eventFutureClicked.observe(viewLifecycleOwner, Observer { clicked ->
+            if (clicked) {
+                findNavController().navigate(FutureListFragmentDirections.actionShowDetail(onClickWeather))
+                viewModel.futureClicked()
+            }
+        })
 
         viewModel.futureWeatherData.observe(viewLifecycleOwner, Observer { future ->
             futureAdapter.submitList(future)
