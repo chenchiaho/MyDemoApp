@@ -5,18 +5,18 @@ import android.location.Location
 import androidx.lifecycle.*
 import com.example.android.mydemoapp.api.future.FutureWeatherParcel
 import com.example.android.mydemoapp.repository.DemoRepository
-import com.example.android.mydemoapp.util.CurrentLocation
+
 import kotlinx.coroutines.launch
 
 class FutureListViewModel(val repository: DemoRepository) : ViewModel() {
 
     val futureWeatherData = repository.futureWeather
-    val location = CurrentLocation()
+
 
     init {
         viewModelScope.launch {
             repository.updateFutureWeather()
-            location.updateLocation()
+
         }
     }
 

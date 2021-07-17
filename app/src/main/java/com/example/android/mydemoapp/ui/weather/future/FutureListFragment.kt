@@ -15,6 +15,7 @@ import com.example.android.mydemoapp.databinding.FutureListFragmentBinding
 import com.example.android.mydemoapp.repository.DemoRepository
 import com.example.android.mydemoapp.ui.weather.current.CurrentWeatherViewModel
 import com.example.android.mydemoapp.ui.weather.current.CurrentWeatherViewModelFactory
+
 import kotlinx.android.synthetic.main.current_weather_fragment.*
 
 

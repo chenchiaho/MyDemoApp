@@ -20,22 +20,21 @@ class DemoRepository(
     val currentWeatherDao = database.currentWeatherDao()
     val futureWeatherDao = database.futureWeatherDao()
 
-    val currentWeather: LiveData<List<WeatherParcel>> =
-            Transformations.map(currentWeatherDao.getCurrentWeatherTable()) {
-                it.asDomainModels()
-            }
+    fun getLocation(): String? {
+        val sharedPref = context.getSharedPreferences("sharedPrefLocation", Context.MODE_PRIVATE)
+        return sharedPref.getString("LOCATION", null)
+    }
 
     suspend fun updateCurrentWeather() {
         withContext(Dispatchers.IO) {
             val weatherToday =
-                    WeatherApi.weatherData.getCurrentWeatherMetric("london")
+                    WeatherApi.weatherData.getCurrentWeatherMetric(getLocation()!!)
             currentWeatherDao.insertAll(weatherToday.asDatabaseModels())
         }
     }
-
-    val futureWeather: LiveData<List<FutureWeatherParcel>> =
-            Transformations.map(futureWeatherDao.getFutureWeatherTable()) {
-                it.asFutureDomainModels()
+    val currentWeather: LiveData<List<WeatherParcel>> =
+            Transformations.map(currentWeatherDao.getCurrentWeatherTable()) {
+                it.asDomainModels()
             }
 
 
@@ -50,13 +49,19 @@ class DemoRepository(
 
         withContext(Dispatchers.IO) {
             val weatherFuture =
-                WeatherApi.weatherData.getFutureWeatherMetric("london")
+                WeatherApi.weatherData.getFutureWeatherMetric(getLocation()!!)
 
             weatherFuture.asDatabaseModels().forEach {
             futureWeatherDao.insertAllFuture(it)
             }
         }
     }
+
+    val futureWeather: LiveData<List<FutureWeatherParcel>> =
+            Transformations.map(futureWeatherDao.getFutureWeatherTable()) {
+                it.asFutureDomainModels()
+            }
+
 
 
 /*
@@ -120,8 +125,6 @@ class DemoRepository(
 
         }.apply()
 
-
-
         editImpression.value = ""
     }
 
@@ -149,6 +152,8 @@ class DemoRepository(
 
         return savedString
     }
+
+
 
 
     companion object {
