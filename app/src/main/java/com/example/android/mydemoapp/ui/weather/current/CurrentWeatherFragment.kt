@@ -1,5 +1,6 @@
 package com.example.android.mydemoapp.ui.weather.current
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.android.mydemoapp.R
+import com.example.android.mydemoapp.api.current.WeatherParcel
 import com.example.android.mydemoapp.databinding.CurrentWeatherFragmentBinding
 import com.example.android.mydemoapp.repository.DemoRepository
 import kotlinx.android.synthetic.main.current_weather_fragment.*
@@ -24,6 +26,7 @@ class CurrentWeatherFragment : Fragment() {
         ViewModelProvider(this, CurrentWeatherViewModelFactory(repository)).get(CurrentWeatherViewModel::class.java)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -35,7 +38,7 @@ class CurrentWeatherFragment : Fragment() {
                 container, false)
 
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.currentWeatherViewmodel = viewModel
+        binding.current = viewModel
 
         viewModel.weatherData.observe(viewLifecycleOwner, Observer {
 
@@ -45,7 +48,6 @@ class CurrentWeatherFragment : Fragment() {
             textView_condition.text = data.description
 
             textView_temperature.text = "${data.temp}°C"
-
             textView_feels_like_temperature.text = "Feels like ${data.feelsLike}°C"
             textView_min_temp.text = "Min: ${data.minTemp}°C"
             textView_max_temp.text = "Max: ${data.maxTemp}°C"

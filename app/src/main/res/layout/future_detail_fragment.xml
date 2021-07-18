@@ -7,7 +7,6 @@
         <variable
             name="weatherDetail"
             type="com.example.android.mydemoapp.api.future.FutureWeatherParcel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

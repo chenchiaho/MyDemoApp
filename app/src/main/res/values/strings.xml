@@ -10,4 +10,11 @@
     <string name="mood_field">Current Mood:</string>
     <string name="button_mood">Get Mood!</string>
     <string name="enter">Enter</string>
+    <string name="weather_status">Weather status</string>
+    <string name="city">City</string>
+    <string name="condition">Condition</string>
+    <string name="temp">--.--°C</string>
+    <string name="humidity">Humidity: —%</string>
+    <string name="visibility">Visibility: —km</string>
+
 </resources>

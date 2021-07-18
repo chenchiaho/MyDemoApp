@@ -6,7 +6,7 @@
 
     <data>
         <variable
-            name="currentWeatherViewmodel"
+            name="current"
             type="com.example.android.mydemoapp.ui.weather.current.CurrentWeatherViewModel" />
 
     </data>
@@ -24,7 +24,6 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-
         <TextView
             android:id="@+id/textView_city"
             android:layout_width="wrap_content"
@@ -32,7 +31,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/merriweatherregular"
-            android:text="London"
+            android:text="@string/city"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +44,7 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/textView_city"
             app:layout_constraintTop_toBottomOf="@+id/textView_city"
-            tools:text="Weather Condition" />
+            tools:text="@string/condition" />
 
 
         <androidx.cardview.widget.CardView
@@ -56,7 +55,6 @@
             android:layout_marginTop="32dp"
             android:elevation="10dp"
             app:cardCornerRadius="25dp"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_condition"
             app:layout_constraintWidth_percent="0.4">
@@ -65,10 +63,10 @@
                 android:id="@+id/imageView_condition_icon"
                 android:layout_width="145dp"
                 android:layout_height="145dp"
-                android:background="#A68E75" />
+                android:background="#A68E75"
+                android:contentDescription="@string/weather_status" />
 
         </androidx.cardview.widget.CardView>
-
 
         <TextView
             android:id="@+id/textView_temperature"
@@ -80,7 +78,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/card_view"
             app:layout_constraintStart_toEndOf="@+id/card_view"
             app:layout_constraintTop_toTopOf="@+id/card_view"
-            tools:text="25.0°C" />
+            tools:text="@string/temp" />
 
         <TextView
             android:id="@+id/textView_feels_like_temperature"
@@ -90,7 +88,7 @@
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/textView_temperature"
             app:layout_constraintTop_toBottomOf="@+id/textView_temperature"
-            tools:text="Feels like 20.4°C" />
+            tools:text="@string/temp" />
 
         <TextView
             android:id="@+id/textView_min_temp"
@@ -103,7 +101,7 @@
             android:textColor="#70604F"
             app:layout_constraintStart_toEndOf="@+id/textView_max_temp"
             app:layout_constraintTop_toBottomOf="@+id/card_view"
-            tools:text="Min: 16.0°C" />
+            tools:text="@string/temp" />
 
         <TextView
             android:id="@+id/textView_max_temp"
@@ -115,7 +113,7 @@
             android:textColor="#70604F"
             app:layout_constraintStart_toStartOf="@+id/card_view"
             app:layout_constraintTop_toBottomOf="@+id/card_view"
-            tools:text="Max: 27.0°C" />
+            tools:text="@string/temp" />
 
         <TextView
             android:id="@+id/textView_humidity"
@@ -127,7 +125,7 @@
             android:textColor="#70604F"
             app:layout_constraintStart_toStartOf="@+id/textView_max_temp"
             app:layout_constraintTop_toBottomOf="@+id/textView_max_temp"
-            tools:text="Humidity: 50%" />
+            tools:text="@string/humidity" />
 
         <TextView
             android:id="@+id/textView_visibility"
@@ -139,7 +137,7 @@
             android:textColor="#70604F"
             app:layout_constraintStart_toStartOf="@+id/textView_humidity"
             app:layout_constraintTop_toBottomOf="@+id/textView_humidity"
-            tools:text="Visibility: 20 km" />
+            tools:text="@string/visibility" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
