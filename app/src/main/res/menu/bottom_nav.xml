@@ -4,14 +4,14 @@
     <item
         android:id="@+id/overviewFragment"
         android:icon="@drawable/outline_account_circle"
-        android:title="Overview"/>
+        android:title="@string/overview"/>
     <item
         android:id="@+id/currentWeatherFragment"
         android:icon="@drawable/ic_sunny"
-        android:title="Weather"/>
+        android:title="@string/weather"/>
     <item
         android:id="@+id/futureWeatherFragment"
-        android:icon="@drawable/ic_week"
-        android:title="Forecast"/>
+        android:icon="@drawable/ic_3hour"
+        android:title="@string/forecast"/>
 
 </menu>

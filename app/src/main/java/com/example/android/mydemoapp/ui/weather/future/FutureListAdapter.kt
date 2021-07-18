@@ -42,15 +42,15 @@ class FutureListAdapter(private val clickListener: OnClickListener):
             item_date.text = strs[0]
             item_time.text = strs[1].removeRange(4, 7)
 
-            val imageURL = "http://openweathermap.org/img/wn/${currentList[position].icon}.png"
+            val imageURL = "http://openweathermap.org/img/wn/${currentList[position].icon}@2x.png"
             imageURL.let {
                 val imgUri = imageURL.toUri().buildUpon().scheme("https").build()
-                Glide.with(imageView_condition_icon.context)
+                Glide.with(item_icon.context)
                         .load(imgUri)
                         .apply(RequestOptions()
                                 .placeholder(R.drawable.loading_animation)
                                 .error(R.drawable.outline_broken_image))
-                        .into(imageView_condition_icon)
+                        .into(item_icon)
             }
 
         }

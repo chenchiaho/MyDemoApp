@@ -16,5 +16,10 @@
     <string name="temp">--.--°C</string>
     <string name="humidity">Humidity: —%</string>
     <string name="visibility">Visibility: —km</string>
+    <string name="date">---- -- --</string>
+    <string name="time">--:--</string>
+    <string name="overview">Overview</string>
+    <string name="weather">Weather</string>
+    <string name="forecast">hours forecast</string>
 
 </resources>

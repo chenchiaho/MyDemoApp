@@ -62,6 +62,7 @@ fun FutureWeatherContainer.asDatabaseModels(): List<FutureEntity> {
 }
 
 fun List<FutureEntity>.asFutureDomainModels(): List<FutureWeatherParcel> {
+
         return map {
                 FutureWeatherParcel(
                         id = it.id,

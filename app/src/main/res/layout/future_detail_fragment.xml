@@ -22,40 +22,47 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-
         <TextView
-            android:id="@+id/textView_city"
+            android:id="@+id/detail_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/merriweatherregular"
-            android:text="@{weatherDetail.name}"
+            android:text="@string/city"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="City" />
 
         <TextView
-            android:id="@+id/textView_condition"
+            android:id="@+id/detail_condition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{weatherDetail.description}"
             android:fontFamily="@font/merriweatherregular"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/textView_city"
-            app:layout_constraintTop_toBottomOf="@+id/textView_city"
-            tools:text="Weather Condition" />
+            android:text="@string/condition"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="@+id/detail_time"
+            app:layout_constraintTop_toBottomOf="@+id/detail_time"
+            tools:text="Condition" />
 
         <TextView
-            android:id="@+id/textView_detail_date"
+            android:id="@+id/detail_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="@{weatherDetail.date}"
-            android:textSize="30sp"
-            app:layout_constraintStart_toEndOf="@+id/textView_city"
-            app:layout_constraintTop_toTopOf="@+id/textView_city" />
+            android:text="@string/date"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="@+id/detail_city"
+            app:layout_constraintTop_toBottomOf="@+id/detail_city" />
+
+        <TextView
+            android:id="@+id/detail_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="@+id/detail_date"
+            app:layout_constraintTop_toBottomOf="@+id/detail_date" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
@@ -66,96 +73,98 @@
             android:elevation="10dp"
             app:cardCornerRadius="25dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_condition"
+            app:layout_constraintTop_toBottomOf="@+id/detail_condition"
             app:layout_constraintWidth_percent="0.4">
 
             <ImageView
-                android:id="@+id/imageView_condition_icon"
+                android:id="@+id/detail_icon"
                 android:layout_width="145dp"
                 android:layout_height="145dp"
-                android:background="#A68E75" />
+                android:background="#A68E75"
+                android:contentDescription="@string/weather_status" />
 
         </androidx.cardview.widget.CardView>
 
 
         <TextView
-            android:id="@+id/textView_temperature"
+            android:id="@+id/detail_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="@{String.valueOf(weatherDetail.temp)}"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/merriweatherregular"
+            android:text="@string/temp"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/card_view"
             app:layout_constraintStart_toEndOf="@+id/card_view"
             app:layout_constraintTop_toTopOf="@+id/card_view"
-            tools:text="25.0°C" />
+            tools:text="@string/temp" />
 
         <TextView
-            android:id="@+id/textView_feels_like_temperature"
+            android:id="@+id/detail_feels_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(weatherDetail.feelsLike)}"
+            android:text="@string/temp"
             android:fontFamily="@font/merriweatherregular"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/textView_temperature"
-            app:layout_constraintTop_toBottomOf="@+id/textView_temperature"
-            tools:text="Feels like 20.4°C" />
+            app:layout_constraintStart_toStartOf="@+id/detail_temperature"
+            app:layout_constraintTop_toBottomOf="@+id/detail_temperature"
+            tools:text="@string/temp" />
 
 
         <TextView
-            android:id="@+id/textView_min_temp"
+            android:id="@+id/detail_min_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:text="@{String.valueOf(weatherDetail.minTemp)}"
+            android:text="@string/temp"
             android:fontFamily="@font/merriweatherregular"
             android:textSize="16sp"
             android:textColor="#70604F"
-            app:layout_constraintStart_toEndOf="@+id/textView_max_temp"
+            app:layout_constraintStart_toEndOf="@+id/detail_max_temp"
             app:layout_constraintTop_toBottomOf="@+id/card_view"
-            tools:text="Min: 16.0°C" />
+            tools:text="@string/temp" />
 
         <TextView
-            android:id="@+id/textView_max_temp"
+            android:id="@+id/detail_max_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@{String.valueOf(weatherDetail.maxTemp)}"
+            android:text="@string/temp"
             android:fontFamily="@font/merriweatherregular"
             android:textSize="16sp"
             android:textColor="#70604F"
             app:layout_constraintStart_toStartOf="@+id/card_view"
             app:layout_constraintTop_toBottomOf="@+id/card_view"
-            tools:text="Max: 27.0°C" />
+            tools:text="@string/temp" />
 
         <TextView
-            android:id="@+id/textView_humidity"
+            android:id="@+id/detail_humidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{String.valueOf(weatherDetail.humidity)}"
+            android:text="@string/humidity"
             android:fontFamily="@font/merriweatherregular"
             android:textSize="18sp"
             android:textColor="#70604F"
-            app:layout_constraintStart_toStartOf="@+id/textView_max_temp"
-            app:layout_constraintTop_toBottomOf="@+id/textView_max_temp"
-            tools:text="Humidity: 50%" />
+            app:layout_constraintStart_toStartOf="@+id/detail_max_temp"
+            app:layout_constraintTop_toBottomOf="@+id/detail_max_temp"
+            tools:text="@string/humidity" />
 
 
         <TextView
-            android:id="@+id/textView_visibility"
+            android:id="@+id/detail_visibility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{String.valueOf(weatherDetail.visibility)}"
+            android:text="@string/visibility"
             android:fontFamily="@font/merriweatherregular"
             android:textSize="18sp"
             android:textColor="#70604F"
-            app:layout_constraintStart_toStartOf="@+id/textView_humidity"
-            app:layout_constraintTop_toBottomOf="@+id/textView_humidity"
-            tools:text="Visibility: 20 km" />
+            app:layout_constraintStart_toStartOf="@+id/detail_humidity"
+            app:layout_constraintTop_toBottomOf="@+id/detail_humidity"
+            tools:text="@string/visibility" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

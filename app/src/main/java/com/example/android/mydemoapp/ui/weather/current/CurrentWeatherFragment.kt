@@ -54,7 +54,7 @@ class CurrentWeatherFragment : Fragment() {
             textView_humidity.text = "Humidity: ${data.humidity}%"
             textView_visibility.text = "Visibility: ${data.visibility / 1000}Km"
 
-            val imageURL = "http://openweathermap.org/img/wn/${data.icon}.png"
+            val imageURL = "http://openweathermap.org/img/wn/${data.icon}@2x.png"
             imageURL.let {
                 val imgUri = imageURL.toUri().buildUpon().scheme("https").build()
                 Glide.with(imageView_condition_icon.context)
