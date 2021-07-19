@@ -1,5 +1,6 @@
 package com.example.android.mydemoapp.util
 
+
 sealed class ResponseStatus<T>(
     val data: T? = null,
     val message: String? = null

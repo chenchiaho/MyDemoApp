@@ -25,5 +25,6 @@
     <string name="title_overview">Overview</string>
     <string name="title_future">Forecast List</string>
     <string name="title_current">Current Weather</string>
+    <string name="could_not_load">Could not load data</string>
 
 </resources>

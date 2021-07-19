@@ -1,5 +1,6 @@
 package com.example.android.mydemoapp
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,15 +10,21 @@ import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings.Global.putString
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.example.android.mydemoapp.ui.weather.current.CurrentWeatherViewModel
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.currentCoroutineContext
+import java.lang.reflect.Array.get
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -62,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                 updateLocation(lastLocation)
             }
         }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -87,8 +95,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     fun updateLocation(location: Location) {
-        var cityString = "Could not find city"
+
+        var cityString = ""
         val geocoder = Geocoder(this, Locale.getDefault())
         val cityLatLon = geocoder.getFromLocation(location.latitude, location.longitude, 1)
         if (cityLatLon[0].locality != null) cityString = cityLatLon[0].locality
@@ -99,9 +109,6 @@ class MainActivity : AppCompatActivity() {
         editor.apply{
             putString("LOCATION", cityString)
         }.apply()
-
-
-
 
     }
 }

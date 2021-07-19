@@ -1,13 +1,19 @@
 package com.example.android.mydemoapp.repository
 
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
+import androidx.constraintlayout.motion.widget.Debug.getLocation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.example.android.mydemoapp.MainActivity
+import com.example.android.mydemoapp.R
 import com.example.android.mydemoapp.api.*
 import com.example.android.mydemoapp.api.current.WeatherParcel
 import com.example.android.mydemoapp.api.future.FutureWeatherParcel
 import com.example.android.mydemoapp.database.DemoDatabase
+import com.example.android.mydemoapp.database.future.FutureEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
@@ -17,21 +23,29 @@ class DemoRepository(
         val database: DemoDatabase,
         val context: Context
 ) {
-    val currentWeatherDao = database.currentWeatherDao()
-    val futureWeatherDao = database.futureWeatherDao()
+    private val currentWeatherDao = database.currentWeatherDao()
+    private val futureWeatherDao = database.futureWeatherDao()
 
-    fun getLocation(): String? {
+    private val newLocation = getLocation()
+    private fun getLocation(): String? {
         val sharedPref = context.getSharedPreferences("sharedPrefLocation", Context.MODE_PRIVATE)
         return sharedPref.getString("LOCATION", null)
     }
 
     suspend fun updateCurrentWeather() {
+    while (newLocation != null) {
         withContext(Dispatchers.IO) {
+
             val weatherToday =
-                    WeatherApi.weatherData.getCurrentWeatherMetric(getLocation()!!)
+                    WeatherApi.weatherData
+                            .getCurrentWeatherMetric(newLocation)
+
             currentWeatherDao.insertAll(weatherToday.asDatabaseModels())
+
+        }
         }
     }
+
     val currentWeather: LiveData<List<WeatherParcel>> =
             Transformations.map(currentWeatherDao.getCurrentWeatherTable()) {
                 it.asDomainModels()
@@ -44,15 +58,15 @@ class DemoRepository(
     }
 
     suspend fun updateFutureWeather() {
+        if (newLocation != null) {
+                futureWeatherDao.deleteOldEntries(currentTime())
+            withContext(Dispatchers.IO) {
+                val weatherFuture =
+                        WeatherApi.weatherData.getFutureWeatherMetric(newLocation)
 
-        futureWeatherDao.deleteOldEntries(currentTime())
-
-        withContext(Dispatchers.IO) {
-            val weatherFuture =
-                WeatherApi.weatherData.getFutureWeatherMetric(getLocation()!!)
-
-            weatherFuture.asDatabaseModels().forEach {
-            futureWeatherDao.insertAllFuture(it)
+                weatherFuture.asDatabaseModels().forEach {
+                    futureWeatherDao.insertAllFuture(it)
+                }
             }
         }
     }
@@ -152,8 +166,6 @@ class DemoRepository(
 
         return savedString
     }
-
-
 
 
     companion object {

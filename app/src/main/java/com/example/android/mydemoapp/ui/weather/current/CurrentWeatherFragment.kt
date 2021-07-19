@@ -41,32 +41,35 @@ class CurrentWeatherFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.current = viewModel
 
+
         viewModel.weatherData.observe(viewLifecycleOwner, Observer {
 
-            val data = it[0]
+            if (it.isNotEmpty()) {
+                val data = it[0]
 
-            textView_city.text = data.name
-            textView_condition.text = data.description
+                textView_city.text = data.name
+                textView_condition.text = data.description
 
-            textView_temperature.text = "${data.temp}°C"
-            textView_feels_like_temperature.text = "Feels like ${data.feelsLike}°C"
-            textView_min_temp.text = "Min: ${data.minTemp}°C"
-            textView_max_temp.text = "Max: ${data.maxTemp}°C"
-            textView_humidity.text = "Humidity: ${data.humidity}%"
-            textView_visibility.text = "Visibility: ${data.visibility / 1000}Km"
+                textView_temperature.text = "${data.temp}°C"
+                textView_feels_like_temperature.text = "Feels like ${data.feelsLike}°C"
+                textView_min_temp.text = "Min: ${data.minTemp}°C"
+                textView_max_temp.text = "Max: ${data.maxTemp}°C"
+                textView_humidity.text = "Humidity: ${data.humidity}%"
+                textView_visibility.text = "Visibility: ${data.visibility / 1000}Km"
 
-            val imageURL = "http://openweathermap.org/img/wn/${data.icon}@2x.png"
-            imageURL.let {
-                val imgUri = imageURL.toUri().buildUpon().scheme("https").build()
-                Glide.with(imageView_condition_icon.context)
-                        .load(imgUri)
-                        .apply(RequestOptions()
-                                .placeholder(R.drawable.loading_animation)
-                                .error(R.drawable.outline_broken_image))
-                        .into(imageView_condition_icon)
+                val imageURL = "http://openweathermap.org/img/wn/${data.icon}@2x.png"
+                imageURL.let {
+                    val imgUri = imageURL.toUri().buildUpon().scheme("https").build()
+                    Glide.with(imageView_condition_icon.context)
+                            .load(imgUri)
+                            .apply(RequestOptions()
+                                    .placeholder(R.drawable.loading_animation)
+                                    .error(R.drawable.outline_broken_image))
+                            .into(imageView_condition_icon)
+                }
             }
-
         })
+
         return binding.root
     }
 

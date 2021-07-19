@@ -42,9 +42,9 @@ fun List<WeatherEntity>.asDomainModels(): List<WeatherParcel> {
 }
 
 fun FutureWeatherContainer.asDatabaseModels(): List<FutureEntity> {
-    var list = mutableListOf<FutureEntity>()
+    val list = mutableListOf<FutureEntity>()
     for (i in futureList.indices) {
-        var entity = FutureEntity(
+        val entity = FutureEntity(
                 name = city.futureName,
                 description = futureList[i].futureWeather[0].futureDescription,
                 visibility = futureList[i].futureVisibility,
@@ -79,3 +79,4 @@ fun List<FutureEntity>.asFutureDomainModels(): List<FutureWeatherParcel> {
                 )
         }
 }
+

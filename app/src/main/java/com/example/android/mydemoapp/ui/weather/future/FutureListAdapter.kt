@@ -77,7 +77,7 @@ class FutureViewHolder(private val binding: ItemFutureBinding): RecyclerView.Vie
 class FutureDiffCallback : DiffUtil.ItemCallback<FutureWeatherParcel>() {
 
     override fun areItemsTheSame(oldItem: FutureWeatherParcel, newItem: FutureWeatherParcel): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.date == newItem.date
     }
 
     override fun areContentsTheSame(oldItem: FutureWeatherParcel, newItem: FutureWeatherParcel): Boolean {
