@@ -4,9 +4,9 @@ This is a personal project that demostrates my current knowledge of Kotlin and A
 
 ## Weather Application
 
-The first tab of the app includes my basic information while I tried to make it interactive with data-binding technique.
-The second tab displays weather condition based on user's current location using [Openweathermap](https://openweathermap.org/api/).
-The third tab displays a list of 3 hour future forecast using RecyclerView.
+The first tab of the app includes my basic information while I tried to make it interactive with data-binding technique.<br>
+The second tab displays weather condition based on user's current location using [Openweathermap](https://openweathermap.org/api/).<br>
+The third tab displays a list of 3 hour future forecast using RecyclerView.<br>
 While clicking on the RecyclerView, it will open up a detail page and carry selected data with it with Safe Args.
 
 This app demonstrates the following techniques:
