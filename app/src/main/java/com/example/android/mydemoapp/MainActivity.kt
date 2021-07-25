@@ -10,6 +10,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Looper
 import android.provider.Settings.Global.putString
 import android.util.Log
 import androidx.core.app.ActivityCompat
@@ -26,12 +27,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.currentCoroutineContext
 import java.lang.reflect.Array.get
 import java.util.*
+import java.util.logging.Handler
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var navController: NavController
     var locationManager: LocationManager? = null
     var locationListener: LocationListener? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             val lastLocation = locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
             if (lastLocation != null) {
                 updateLocation(lastLocation)
+
             }
         }
 
@@ -111,4 +115,5 @@ class MainActivity : AppCompatActivity() {
         }.apply()
 
     }
+
 }

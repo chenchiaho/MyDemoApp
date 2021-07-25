@@ -1,6 +1,7 @@
 package com.example.android.mydemoapp.repository
 
 import android.content.Context
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.constraintlayout.motion.widget.Debug.getLocation
@@ -15,8 +16,11 @@ import com.example.android.mydemoapp.api.future.FutureWeatherParcel
 import com.example.android.mydemoapp.database.DemoDatabase
 import com.example.android.mydemoapp.database.future.FutureEntity
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import okhttp3.internal.http2.Http2Reader
 import java.time.LocalDateTime
+import java.util.logging.Handler
 
 
 class DemoRepository(
@@ -27,22 +31,21 @@ class DemoRepository(
     private val futureWeatherDao = database.futureWeatherDao()
 
     private val newLocation = getLocation()
+
     private fun getLocation(): String? {
         val sharedPref = context.getSharedPreferences("sharedPrefLocation", Context.MODE_PRIVATE)
         return sharedPref.getString("LOCATION", null)
     }
 
     suspend fun updateCurrentWeather() {
-    while (newLocation != null) {
-        withContext(Dispatchers.IO) {
 
-            val weatherToday =
-                    WeatherApi.weatherData
-                            .getCurrentWeatherMetric(newLocation)
-
-            currentWeatherDao.insertAll(weatherToday.asDatabaseModels())
-
-        }
+        if (newLocation != null) {
+            withContext(Dispatchers.IO) {
+                val weatherToday =
+                        WeatherApi.weatherData
+                                .getCurrentWeatherMetric(newLocation)
+                currentWeatherDao.insertAll(weatherToday.asDatabaseModels())
+            }
         }
     }
 
@@ -167,11 +170,12 @@ class DemoRepository(
         return savedString
     }
 
-
     companion object {
         fun from(appContext: Context): DemoRepository {
-            return DemoRepository(DemoDatabase.getInstance(appContext),
-                    appContext)
+            return DemoRepository(
+                    DemoDatabase.getInstance(appContext),
+                    appContext
+            )
         }
     }
 }

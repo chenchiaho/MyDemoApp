@@ -2,6 +2,7 @@ package com.example.android.mydemoapp.ui.weather.current
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.android.mydemoapp.MainActivity
 import com.example.android.mydemoapp.repository.DemoRepository
 
 class CurrentWeatherViewModelFactory(
