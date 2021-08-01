@@ -20,7 +20,6 @@ import retrofit2.http.Query
 /*
 future
 http://api.openweathermap.org/data/2.5/forecast?q=london&appid=7c7534c88bf9c7439612b68bebff8e51&units=metric
-1 night, 5 day, 9, 13, 17, 21, 25, 29, 33, 37,
 */
 
 interface WeatherService {

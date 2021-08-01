@@ -35,10 +35,18 @@ class OverviewFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = viewModel
         binding.repository = viewModel.repository
+        val enterButton = binding.buttonEnter
+        val editText = binding.editTextImpression
+
+        if (editText.equals("")) {
+            enterButton.isEnabled = false
+        } else true
 
 
         viewModel.repository.editImpression.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(context, "Your input is: $it", Toast.LENGTH_SHORT).show()
+            if (it.isNotEmpty()) {
+                Toast.makeText(context, "Your input is: $it", Toast.LENGTH_SHORT).show()
+            }
         })
 
         return binding.root
