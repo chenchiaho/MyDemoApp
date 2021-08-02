@@ -55,11 +55,9 @@ class OverviewFragment : Fragment() {
             }
         })
 
-
-
-        viewModel.repository.editImpression.observe(viewLifecycleOwner, Observer {
+        viewModel.repository.editImpression.observe(viewLifecycleOwner, {
             if (it.isNotEmpty()) {
-                Toast.makeText(context, "Your input is: $it", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "The input is: $it", Toast.LENGTH_SHORT).show()
             }
         })
 

@@ -20,11 +20,20 @@
     <string name="time">--:--</string>
     <string name="overview">Overview</string>
     <string name="weather">Weather</string>
-    <string name="forecast">hours forecast</string>
+    <string name="forecast">Hours</string>
     <string name="title_detail">Forecast Details</string>
     <string name="title_overview">Overview</string>
     <string name="title_future">Forecast List</string>
     <string name="title_current">Current Weather</string>
     <string name="could_not_load">Could not load data</string>
+    <string name="overviewText">Hello friend!
+        \n\nThis is Kevin, I am a developer who\'s always excited to learn all about Android developing.
+        \n\nIt is always exciting for me to see how codes and functions being put together and working properly.
+        \n\nI have been dedicating in learning all about the exciting world of programming and only wish I could start much earlier.
+        \n\nThis application is put together using fundamental techniques and methods in Android developing such as RecyclerView, Retrofit, Room Database, and Data-Binding.
+        \n\nAside from my current full-time job, I try the best I can to move my coding skills up to another level one step at a time.
+        \n\nI appreciate your viewing and really look forward to an opportunity to dive into the world of Android developing and commit myself to it as a full time passion!</string>
+    <string name="generate">Generate</string>
+    <string name="leave_an_impression">Leave an impression!</string>
 
 </resources>

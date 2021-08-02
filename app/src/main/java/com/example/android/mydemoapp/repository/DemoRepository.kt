@@ -1,26 +1,16 @@
 package com.example.android.mydemoapp.repository
 
 import android.content.Context
-import android.os.Looper
-import android.util.Log
-import android.widget.Toast
-import androidx.constraintlayout.motion.widget.Debug.getLocation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import com.example.android.mydemoapp.MainActivity
-import com.example.android.mydemoapp.R
 import com.example.android.mydemoapp.api.*
 import com.example.android.mydemoapp.api.current.WeatherParcel
 import com.example.android.mydemoapp.api.future.FutureWeatherParcel
 import com.example.android.mydemoapp.database.DemoDatabase
-import com.example.android.mydemoapp.database.future.FutureEntity
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import okhttp3.internal.http2.Http2Reader
 import java.time.LocalDateTime
-import java.util.logging.Handler
 
 
 class DemoRepository(
@@ -82,22 +72,24 @@ class DemoRepository(
 
 
 /*
-
     OverviewViewModel
 */
 
     private val moods: List<String> = listOf(
-            "(👍≖‿‿≖)👍 👍(≖‿‿≖👍)", "（っ＾▿＾）",
-            "≧◠ᴥ◠≦✊", "ᕙ(^▿^-ᕙ)", "≧◠‿◠≦✌", "(͡° ͜ʖ ͡°)", "(>‿◠)✌",
-            "(っ＾▿＾)۶\uD83C\uDF78\uD83C\uDF1F\uD83C\uDF7A٩(˘◡˘ )", "✍(◔◡◔)", "(ㆆ_ㆆ)",
-            "\uD83D\uDE2D", "\uD83D\uDCAA (•︡益︠•) \uD83D\uDC4A"
+            "(͡° ͜ʖ ͡°)",
+            "(>‿◠)✌",
+            "(っ＾▿＾)۶\uD83C\uDF78\uD83C\uDF1F\uD83C\uDF7A٩(˘◡˘ )",
+            "\uD83D\uDE2D",
+            "\uD83D\uDCAA (•︡益︠•) \uD83D\uDC4A"
     )
 
     private val impressions: List<String> = listOf(
-            "Awesome", "Nice",
-            "Marginally favorable", "ok", "Could do better", "Pathetic",
-            "Odd, empty", "\uD83D\uDC4D", "⭐",
-            "Whatever", "Fun"
+            "Awesome",
+            "Nice",
+            "Marginally favorable",
+            "Could do better",
+            "Keep on working!",
+            "\uD83D\uDC4D",
     )
 
     val editImpression = MutableLiveData<String>()
@@ -111,7 +103,7 @@ class DemoRepository(
         get() = _displayImpression
 
 
-    fun getRandomMood(): String {
+    private fun getRandomMood(): String {
         val random = (moods.indices).random()
         return moods[random]
     }
@@ -145,7 +137,7 @@ class DemoRepository(
         editImpression.value = ""
     }
 
-    fun loadSharedPrefImpression(): String? {
+    private fun loadSharedPrefImpression(): String? {
         val sharedPref = context.getSharedPreferences("sharedPrefImpression", Context.MODE_PRIVATE)
         val savedString = sharedPref.getString("IMPRESSION", null)
 
@@ -163,11 +155,10 @@ class DemoRepository(
         }.apply()
     }
 
-    fun loadSharedPrefMood(): String? {
-        val sharedPref = context.getSharedPreferences("sharedPrefMood", Context.MODE_PRIVATE)
-        val savedString = sharedPref.getString("MOOD", null)
+    private fun loadSharedPrefMood(): String? {
 
-        return savedString
+        val sharedPref = context.getSharedPreferences("sharedPrefMood", Context.MODE_PRIVATE)
+        return sharedPref.getString("MOOD", null)
     }
 
     companion object {
