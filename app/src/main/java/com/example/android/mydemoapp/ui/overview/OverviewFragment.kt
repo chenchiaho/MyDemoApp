@@ -35,6 +35,7 @@ class OverviewFragment : Fragment() {
                 R.layout.fragment_overview,
                 container, false
         )
+
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewmodel = viewModel
         binding.repository = viewModel.repository
@@ -46,8 +47,8 @@ class OverviewFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val editTextInput = editText.text.toString().trim()
 
+                val editTextInput = editText.text.toString().trim()
                 enterButton.isEnabled = editTextInput.isNotEmpty()
             }
 

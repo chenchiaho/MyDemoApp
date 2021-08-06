@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -33,6 +34,9 @@ class FutureListAdapter(private val clickListener: OnClickListener):
     override fun onBindViewHolder(holder: FutureViewHolder, position: Int) {
         holder.bind(getItem(position), clickListener)
 
+//        val item = getItem(position)
+
+
         holder.itemView.apply {
 
             item_max_temp.text = "Max:\n${currentList[position].maxTemp}".removeRange(8, 9)
@@ -52,6 +56,8 @@ class FutureListAdapter(private val clickListener: OnClickListener):
                                 .error(R.drawable.outline_broken_image))
                         .into(item_icon)
             }
+
+//            ViewCompat.setTransitionName(item_icon, currentList[position].date)
 
         }
     }

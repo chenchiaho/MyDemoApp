@@ -35,5 +35,19 @@
         \n\nI appreciate your viewing and really look forward to an opportunity to dive into the world of Android developing and commit myself to it as a full time passion!</string>
     <string name="generate">Generate</string>
     <string name="leave_an_impression">Leave an impression!</string>
+    <string name="mood1">(͡° ͜ʖ ͡°)</string>
+    <string name="mood2"><![CDATA[(>‿◠)✌]]></string>
+    <string name="mood3">(っ＾▿＾)۶🍸🌟🍺٩(˘◡˘ )</string>
+    <string name="mood4">😭</string>
+    <string name="mood5">💪 (•︡益︠•) 👊</string>
+    <string name="impression1">Awesome</string>
+    <string name="impression2">Nice</string>
+    <string name="impression3">Marginally favorable</string>
+    <string name="impression4">Could do better</string>
+    <string name="impression5">Keep on working!</string>
+    <string name="impression6">👍</string>
+    <string name="no_mood">No mood found</string>
+    <string name="no_impression">No impression found</string>
+
 
 </resources>

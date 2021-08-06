@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
+import androidx.transition.TransitionInflater
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.android.mydemoapp.R
@@ -34,6 +35,13 @@ class DetailFragment : Fragment() {
                 R.layout.future_detail_fragment,
                 container,false
         )
+//        val animation = TransitionInflater.from(requireContext()).inflateTransition(
+//                android.R.transition.move
+//        )
+//        sharedElementEnterTransition = animation
+//        sharedElementReturnTransition = animation
+
+
 
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -53,6 +61,7 @@ class DetailFragment : Fragment() {
         val strs = weather.date.split(" ").toTypedArray()
         binding.detailDate.text = strs[0]
         binding.detailTime.text = strs[1].removeRange(4, 7)
+
 
         val imageURL = "http://openweathermap.org/img/wn/${weather.icon}@2x.png"
         imageURL.let {

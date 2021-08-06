@@ -6,7 +6,6 @@ import com.example.android.mydemoapp.repository.DemoRepository
 
 class OverviewViewModel(val repository: DemoRepository) : ViewModel(){
 
-
     val currentMood: LiveData<String>
         get() = repository.currentMood
 

@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.example.android.mydemoapp.R
 import com.example.android.mydemoapp.api.future.FutureWeatherParcel
@@ -18,6 +21,8 @@ import com.example.android.mydemoapp.ui.weather.current.CurrentWeatherViewModel
 import com.example.android.mydemoapp.ui.weather.current.CurrentWeatherViewModelFactory
 
 import kotlinx.android.synthetic.main.current_weather_fragment.*
+import kotlinx.android.synthetic.main.item_future.*
+import androidx.core.util.Pair
 
 
 class FutureListFragment : Fragment() {
@@ -54,7 +59,12 @@ class FutureListFragment : Fragment() {
 
         viewModel.eventFutureClicked.observe(viewLifecycleOwner, Observer { clicked ->
             if (clicked) {
-                findNavController().navigate(FutureListFragmentDirections.actionShowDetail(onClickWeather))
+
+//                val extras = FragmentNavigatorExtras(item_icon to "imageTN")
+                findNavController().navigate(
+                        FutureListFragmentDirections.actionShowDetail(onClickWeather)
+//                        extras
+                )
                 viewModel.futureClicked()
             }
         })
