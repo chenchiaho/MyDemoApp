@@ -1,5 +1,6 @@
 package com.example.android.mydemoapp.ui.weather.future
 
+import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,8 +29,9 @@ import androidx.core.util.Pair
 class FutureListFragment : Fragment() {
 
     private val viewModel: FutureListViewModel by lazy {
+        val app = Application()
         val repository = DemoRepository.from(requireContext())
-        ViewModelProvider(this, FutureListViewModelFactory(repository)).get(FutureListViewModel::class.java)
+        ViewModelProvider(this, FutureListViewModelFactory(app, repository)).get(FutureListViewModel::class.java)
     }
 
     private lateinit var onClickWeather: FutureWeatherParcel
@@ -60,10 +62,8 @@ class FutureListFragment : Fragment() {
         viewModel.eventFutureClicked.observe(viewLifecycleOwner, Observer { clicked ->
             if (clicked) {
 
-//                val extras = FragmentNavigatorExtras(item_icon to "imageTN")
                 findNavController().navigate(
                         FutureListFragmentDirections.actionShowDetail(onClickWeather)
-//                        extras
                 )
                 viewModel.futureClicked()
             }
