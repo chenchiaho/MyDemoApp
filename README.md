@@ -1,6 +1,6 @@
 # Demo Weather Application
 
-This is a personal project that demostrates my current knowledge of Kotlin and Android App development.
+This is a personal project that demonstrates my current knowledge of Kotlin and Android App development.
 
 ## Weather Application
 
