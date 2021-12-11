@@ -1,12 +1,10 @@
 package com.example.android.mydemoapp.ui.weather.current
 
 import android.annotation.SuppressLint
-import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
@@ -15,21 +13,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.android.mydemoapp.DemoApplication
 import com.example.android.mydemoapp.R
-import com.example.android.mydemoapp.api.current.WeatherParcel
 import com.example.android.mydemoapp.databinding.CurrentWeatherFragmentBinding
 import com.example.android.mydemoapp.repository.DemoRepository
-import com.example.android.mydemoapp.util.ResponseStatus
 import kotlinx.android.synthetic.main.current_weather_fragment.*
 
 
 class CurrentWeatherFragment : Fragment() {
 
     private val viewModel: CurrentWeatherViewModel by lazy {
-        val app = Application()
         val repository = DemoRepository.from(requireContext())
-        ViewModelProvider(this, CurrentWeatherViewModelFactory(app, repository)).get(CurrentWeatherViewModel::class.java)
+        ViewModelProvider(this, CurrentWeatherViewModelFactory(repository)).get(CurrentWeatherViewModel::class.java)
     }
 
     @SuppressLint("SetTextI18n")
@@ -45,7 +39,6 @@ class CurrentWeatherFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.current = viewModel
-
 
         viewModel.weatherData.observe(viewLifecycleOwner, Observer {
 
@@ -72,8 +65,6 @@ class CurrentWeatherFragment : Fragment() {
                                     .error(R.drawable.outline_broken_image))
                             .into(imageView_condition_icon)
                 }
-            } else {
-                Toast.makeText(activity, "An error occured", Toast.LENGTH_LONG).show()
             }
         })
 

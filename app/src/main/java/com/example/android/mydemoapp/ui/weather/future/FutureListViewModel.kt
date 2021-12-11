@@ -10,7 +10,6 @@ class FutureListViewModel(val repository: DemoRepository) : ViewModel() {
 
     val futureWeatherData = repository.futureWeather
 
-
     init {
         viewModelScope.launch {
             repository.updateFutureWeather()

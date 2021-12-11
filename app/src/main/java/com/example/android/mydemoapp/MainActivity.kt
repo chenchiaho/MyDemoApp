@@ -8,14 +8,11 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings.Global.putString
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -39,7 +36,6 @@ class MainActivity : AppCompatActivity() {
     var locationManager: LocationManager? = null
     var locationListener: LocationListener? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -53,7 +49,6 @@ class MainActivity : AppCompatActivity() {
 
         bottom_nav.setupWithNavController(navController)
 
-    if (hasInternetConnection()) {
         locationManager = this.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         locationListener = LocationListener { location -> updateLocation(location) }
 
@@ -75,12 +70,8 @@ class MainActivity : AppCompatActivity() {
             val lastLocation = locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
             if (lastLocation != null) {
                 updateLocation(lastLocation)
-
             }
         }
-    } else {
-        Toast.makeText(this, "Internet?", Toast.LENGTH_LONG).show()
-    }
 
     }
 
@@ -107,8 +98,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-    fun updateLocation(location: Location) {
+    private fun updateLocation(location: Location) {
 
         var cityString = ""
         val geocoder = Geocoder(this, Locale.getDefault())
@@ -123,20 +113,4 @@ class MainActivity : AppCompatActivity() {
         }.apply()
 
     }
-
-    private fun hasInternetConnection(): Boolean {
-        val connectivityManager = application.getSystemService(
-                Context.CONNECTIVITY_SERVICE
-        ) as ConnectivityManager
-
-        val activeNetwork = connectivityManager.activeNetwork ?: return false
-        val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
-        return when {
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-            else -> false
-        }
-    }
-
 }
