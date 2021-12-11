@@ -1,10 +1,8 @@
 package com.example.android.mydemoapp.api
 
-import android.util.Log
 import com.example.android.mydemoapp.api.current.WeatherContainer
 import com.example.android.mydemoapp.api.current.WeatherParcel
 import com.example.android.mydemoapp.api.future.FutureWeatherContainer
-
 import com.example.android.mydemoapp.api.future.FutureWeatherParcel
 import com.example.android.mydemoapp.database.future.FutureEntity
 import com.example.android.mydemoapp.database.current.WeatherEntity

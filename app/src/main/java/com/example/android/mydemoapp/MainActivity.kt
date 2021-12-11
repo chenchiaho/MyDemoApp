@@ -1,44 +1,28 @@
 package com.example.android.mydemoapp
 
-import android.app.Application
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Looper
-import android.provider.Settings.Global.putString
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
-import com.example.android.mydemoapp.ui.weather.current.CurrentWeatherViewModel
-
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.currentCoroutineContext
-import java.lang.reflect.Array.get
 import java.util.*
-import java.util.logging.Handler
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var navController: NavController
     var locationManager: LocationManager? = null
     var locationListener: LocationListener? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         bottom_nav.setupWithNavController(navController)
 
-    if (hasInternetConnection()) {
+
         locationManager = this.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         locationListener = LocationListener { location -> updateLocation(location) }
 
@@ -78,10 +62,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-    } else {
-        Toast.makeText(this, "Internet?", Toast.LENGTH_LONG).show()
-    }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -107,7 +87,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     fun updateLocation(location: Location) {
 
         var cityString = ""
@@ -121,22 +100,5 @@ class MainActivity : AppCompatActivity() {
         editor.apply{
             putString("LOCATION", cityString)
         }.apply()
-
     }
-
-    private fun hasInternetConnection(): Boolean {
-        val connectivityManager = application.getSystemService(
-                Context.CONNECTIVITY_SERVICE
-        ) as ConnectivityManager
-
-        val activeNetwork = connectivityManager.activeNetwork ?: return false
-        val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
-        return when {
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-            else -> false
-        }
-    }
-
 }

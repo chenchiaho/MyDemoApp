@@ -3,7 +3,6 @@ package com.example.android.mydemoapp.ui.weather.future
 
 import androidx.lifecycle.*
 import com.example.android.mydemoapp.repository.DemoRepository
-
 import kotlinx.coroutines.launch
 
 class FutureListViewModel(val repository: DemoRepository) : ViewModel() {
@@ -14,7 +13,6 @@ class FutureListViewModel(val repository: DemoRepository) : ViewModel() {
     init {
         viewModelScope.launch {
             repository.updateFutureWeather()
-
         }
     }
 

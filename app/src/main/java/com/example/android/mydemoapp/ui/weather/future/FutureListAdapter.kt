@@ -1,15 +1,9 @@
 package com.example.android.mydemoapp.ui.weather.future
 
 import android.annotation.SuppressLint
-import android.content.ClipData
-import android.nfc.Tag
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
-import androidx.core.view.ViewCompat
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,10 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.android.mydemoapp.R
 import com.example.android.mydemoapp.api.future.FutureWeatherParcel
-import com.example.android.mydemoapp.databinding.FutureListFragmentBinding
 import com.example.android.mydemoapp.databinding.ItemFutureBinding
-import kotlinx.android.synthetic.main.current_weather_fragment.*
-import kotlinx.android.synthetic.main.future_list_fragment.view.*
 import kotlinx.android.synthetic.main.item_future.view.*
 
 class FutureListAdapter(private val clickListener: OnClickListener):
@@ -53,7 +44,6 @@ class FutureListAdapter(private val clickListener: OnClickListener):
                                 .error(R.drawable.outline_broken_image))
                         .into(item_icon)
             }
-
         }
     }
 }

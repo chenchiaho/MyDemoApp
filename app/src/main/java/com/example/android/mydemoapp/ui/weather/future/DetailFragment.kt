@@ -1,9 +1,7 @@
 package com.example.android.mydemoapp.ui.weather.future
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +9,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
-import androidx.transition.TransitionInflater
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.android.mydemoapp.R
 import com.example.android.mydemoapp.databinding.FutureDetailFragmentBinding
-import kotlinx.android.synthetic.main.current_weather_fragment.*
-import kotlinx.android.synthetic.main.future_detail_fragment.*
-import kotlinx.android.synthetic.main.item_future.view.*
-
 
 class DetailFragment : Fragment() {
 
