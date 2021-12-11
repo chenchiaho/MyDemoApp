@@ -60,10 +60,8 @@ class FutureListFragment : Fragment() {
         viewModel.eventFutureClicked.observe(viewLifecycleOwner, Observer { clicked ->
             if (clicked) {
 
-//                val extras = FragmentNavigatorExtras(item_icon to "imageTN")
                 findNavController().navigate(
                         FutureListFragmentDirections.actionShowDetail(onClickWeather)
-//                        extras
                 )
                 viewModel.futureClicked()
             }
@@ -72,9 +70,6 @@ class FutureListFragment : Fragment() {
         viewModel.futureWeatherData.observe(viewLifecycleOwner, Observer { future ->
             futureAdapter.submitList(future)
         })
-
-
-
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
